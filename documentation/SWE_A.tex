@@ -59,11 +59,40 @@ Frankfurt University of Applied Sciences \\
 }
 
 \maketitle              % typeset the title of the contribution
+%=============================================================================
+\section{Exercise 2}
+%=============================================================================
+%=============================================================================
+\subsection{Fahrzeug }
+%=============================================================================
+
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+void Fahrzeug::setName(const char *n)
+{
+     if (name != nullptr) {
+     	delete name;
+     	name = nullptr; // handling dangling pointer to freed memory
+     }
+
+     if (n != nullptr) { // handling empty pointer as parameter, preventing strlen from crashing
+     	name = new char[strlen(n)+1];
+     	strcpy(name, n);
+     }
+}
+
+
+
+Fahrzeug& operator=(const Fahrzeug &other) {
+	
+}
+
+\end{lstlisting}
+\footnotesize{Figure 1 Fahrzeug Program}\newline
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %=============================================================================
-\section{Aufgabe 3}
+\section{Exercise 3}
 %=============================================================================
 %=============================================================================
 \subsection{Ebook Headerfile}
@@ -94,7 +123,7 @@ public:
 #endif // !_EBOOK_H_
 
 \end{lstlisting}
-\footnotesize{Figure 1 Header of Ebook Program}\newline
+\footnotesize{Figure 2 Header of Ebook Program}\newline
 
 \newpage
 %=============================================================================
@@ -154,7 +183,7 @@ ostream & operator<<(ostream & output, const EBook & book)
 	return output;
 }
 \end{lstlisting}
-\footnotesize{Figure 2 Ebook class}\newline
+\footnotesize{Figure 3 Ebook class}\newline
 %=============================================================================
 \subsection{Main Class}
 %=============================================================================
@@ -170,9 +199,9 @@ int main() {
 	return 0; 
 
 \end{lstlisting}
-\footnotesize{Figure 3 Main class}
+\footnotesize{Figure 4 Main class}
 %=============================================================================
-\section{Aufgabe 4}
+\section{Exercise 4}
 %=============================================================================
 %=============================================================================
 \subsection{Box Headerfile}
@@ -202,7 +231,7 @@ public:
 
 #endif // !_BOX_H_
 \end{lstlisting}
-\footnotesize{Figure 4 Header of Box}
+\footnotesize{Figure 5 Header of Box}
 %=============================================================================
 \subsection{Circle Headerfile}
 %=============================================================================
@@ -235,7 +264,7 @@ private:
 
 #endif // !_CIRCLE_H_
 \end{lstlisting}
-\footnotesize{Figure 5 Header of Circle}
+\footnotesize{Figure 6 Header of Circle}
 %=============================================================================
 \subsection{Form Headerfile}
 %=============================================================================
@@ -269,7 +298,7 @@ public:
 
 #endif // !_FORM_H_
 \end{lstlisting}
-\footnotesize{Figure 6 Header of Form}
+\footnotesize{Figure 7 Header of Form}
 %=============================================================================
 \subsection{Rectangle Headerfile}
 %=============================================================================
@@ -305,7 +334,7 @@ private:
 
 #endif // !_RECTANGLE_H_
 \end{lstlisting}
-\footnotesize{Figure 7 Header of Rectangle}
+\footnotesize{Figure 8 Header of Rectangle}
 %=============================================================================
 \subsection{Box Class}
 %=============================================================================
@@ -377,7 +406,7 @@ Box operator+(Box left, Box right)
 	 
 }
 \end{lstlisting}
-\footnotesize{Figure 8 Box Class}
+\footnotesize{Figure 9 Box Class}
 %=============================================================================
 \subsection{Circle Class}
 %=============================================================================
@@ -413,7 +442,7 @@ void Circle::MoveBox(double dX, double dY)
 }
 
 \end{lstlisting}
-\footnotesize{Figure 9 Circle Class}
+\footnotesize{Figure 10 Circle Class}
 
 %=============================================================================
 \subsection{Rectangle Class}
@@ -450,7 +479,7 @@ void Rectangle::SetUpBox()
 	this->box.SetYMin(-height / 2);
 }
 \end{lstlisting}
-\footnotesize{Figure 10 Rectangle Class}
+\footnotesize{Figure 11 Rectangle Class}
 %=============================================================================
 \subsection{Main Class}
 %=============================================================================
@@ -650,7 +679,7 @@ Rectangle* RectCreator(bool isTrue) {
 	}
 }
 \end{lstlisting}
-\footnotesize{Figure 11 Main Class}
+\footnotesize{Figure 12 Main Class}
 
 %=============================================================================
 \section{Foundations}
