@@ -1,0 +1,701 @@
+% This is LLNCS.DEM the demonstration file of
+% the LaTeX macro package from Springer-Verlag
+% for Lecture Notes in Computer Science,
+% version 2.2 for LaTeX2e
+%
+\documentclass{llncs}
+
+%
+%\usepackage{makeidx}  % allows for indexgeneration
+%
+
+\usepackage{epsfig}
+%\usepackage{multirow}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{listings}
+
+\usepackage{color}
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Java,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\begin{document}
+
+\makeatletter
+\renewcommand\subsubsection{\@startsection{subsubsection}{2}{\z@}%
+                       {-18\p@ \@plus -4\p@ \@minus -4\p@}%
+                       {\lineskip}%
+                       {\normalfont\normalsize\bfseries\boldmath}}
+\makeatother
+
+
+\title{Software Engeneering Analysis Sientific Report}
+
+ % abbreviated author list (for running head)
+\author{Kendra Birringer (1229372) \\ Nader Cacace (1208115) \\ Steffen Hanzlik (1207417) \\ Marco Peluso (1228849) \\ Svetozar Stojanovic (1262287)}
+%%% modified list of authors for the TOC (add the affiliations)
+
+\institute{
+Frankfurt University of Applied Sciences \\
+}
+
+\maketitle              % typeset the title of the contribution
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%=============================================================================
+\section{Aufgabe 3}
+%=============================================================================
+%=============================================================================
+\subsection{Ebook Headerfile}
+%=============================================================================
+
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+#ifndef _EBOOK_H_
+#define _EBOOK_H_
+#include <string>
+#include <iostream>
+using namespace std;
+class EBook
+{
+private:
+	string title, content; 
+public:
+	EBook() :title{ "" }, content{ "" } {};
+	EBook(string title, string content) :title{ title }, content{ content }{};
+	void SetTitle(string title);
+	string GetTitle()const;
+	void SetContent(string content);
+	string GetContent()const;
+	void print();
+	friend ostream &operator<<(ostream &output, const EBook& book);
+};
+
+
+#endif // !_EBOOK_H_
+
+\end{lstlisting}
+\footnotesize{Figure 1 Header of Ebook Program}\newline
+
+\newpage
+%=============================================================================
+\subsection{Ebook Class}
+%=============================================================================
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+#include "eBook.h"
+#include <iostream>
+using namespace std;
+void EBook::SetTitle(string title)
+{
+	if (title!="")
+	{
+		this->title = title;
+	}
+	else
+	{
+		cout << "Title not set!" << endl;
+	}
+}
+
+string EBook::GetTitle() const
+{
+	return this->title;
+}
+
+void EBook::SetContent(string content)
+{
+	if (content != "")
+	{
+		this->content = content;
+	}
+	else
+	{
+		cout << "Content not set!" << endl;
+	}
+}
+
+string EBook::GetContent() const
+{
+	return this->content;
+}
+
+void EBook::print()
+{
+	cout << "Title: " << this->title << '\n';
+	cout << "Content: " << '\n' <<this->content << '\n';
+
+}
+
+ostream & operator<<(ostream & output, const EBook & book)
+{
+	output << "Title: " << book.title << '\n' << "Content: " << book.content << '\n';
+	//or alternatively 
+
+	//output<<book.print()<<'\n';
+	return output;
+}
+\end{lstlisting}
+\footnotesize{Figure 2 Ebook class}\newline
+%=============================================================================
+\subsection{Main Class}
+%=============================================================================
+
+\begin{lstlisting}
+#include <iostream>
+#include "eBook.h"
+int main() {
+	EBook book("Brown Fox", "The quick brown fox jumps over the lazy dog.");
+	std::cout << book; 
+
+
+	return 0; 
+
+\end{lstlisting}
+\footnotesize{Figure 3 Main class}
+%=============================================================================
+\section{Aufgabe 4}
+%=============================================================================
+%=============================================================================
+\subsection{Box Headerfile}
+%=============================================================================
+
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+#ifndef _BOX_H_
+#define _BOX_H_
+class Box
+{
+private:
+	double xMin, xMax, yMin, yMax;
+public:
+	
+	Box():xMin{ 0.0 }, xMax{ 0.0 }, yMin{ 0.0 }, yMax{ 0.0 }{}
+	double GetXMin() const { return xMin; }
+	double GetXMax() const { return xMax; }
+	double GetYMin() const { return yMin; }
+	double GetYMax() const { return yMax; }
+	void SetXMax(double val);
+	void SetXMin(double val);
+	void SetYMin(double val);
+	void SetYMax(double val);
+	friend Box operator+(Box left, Box right);
+	void print(); 
+};
+
+#endif // !_BOX_H_
+\end{lstlisting}
+\footnotesize{Figure 4 Header of Box}
+%=============================================================================
+\subsection{Circle Headerfile}
+%=============================================================================
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+#ifndef _CIRCLE_H_
+#define _CIRLE_H_
+#include "Form.h"
+class Circle: public Form
+{
+private: 
+	double radius; 
+public:
+	Circle() 
+	{
+		Form();
+		this->box.SetXMax(0.0);
+		this->box.SetXMin(0.0);
+		this->box.SetYMax(0.0);
+		this->box.SetYMin(0.0);
+	}
+	Circle(double rad):radius{rad}{}
+
+	//MOVE FOR CIRCLE
+	void Move(double dX, double dY);
+	void SetUpBox();
+private:
+	void MoveBox(double dX = 0, double dY = 0);
+	
+};
+
+#endif // !_CIRCLE_H_
+\end{lstlisting}
+\footnotesize{Figure 5 Header of Circle}
+%=============================================================================
+\subsection{Form Headerfile}
+%=============================================================================
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+#ifndef _FORM_H_
+#define _FORM_H_
+#include "Box.h"
+class Form
+{
+private:
+	double xCenter, yCenter;  
+protected:	
+	Box box; 
+	
+public:
+	Form()
+	{
+		this->xCenter = 0.0;
+		this->yCenter = 0.0;
+	}
+	
+	void Move(double dX, double dY) {
+		this->xCenter += dX;
+		this->yCenter += dY;
+		
+	}
+	Box & GetBoxRef() { //how to get const ref???
+		return box; 
+	}
+};
+
+#endif // !_FORM_H_
+\end{lstlisting}
+\footnotesize{Figure 6 Header of Form}
+%=============================================================================
+\subsection{Rectangle Headerfile}
+%=============================================================================
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+#ifndef _RECTANGLE_H_
+#define _RECTANGLE_H_
+#include "Form.h"
+class Rectangle: public Form
+{
+private:
+	double width, height; 
+
+public:
+	Rectangle() 
+	{
+		Form();
+		this->box.SetXMax(0.0);
+		this->box.SetXMin(0.0);
+		this->box.SetYMax(0.0);
+		this->box.SetYMin(0.0);
+
+	}
+	Rectangle(double h, double w):height{h},width{w}{}
+	//MOVE FOR RECT
+	void Move(double dX, double dY); 
+	void SetUpBox();
+private:
+	void MoveBox(double dX = 0, double dY = 0);
+	
+};
+
+
+
+#endif // !_RECTANGLE_H_
+\end{lstlisting}
+\footnotesize{Figure 7 Header of Rectangle}
+%=============================================================================
+\subsection{Box Class}
+%=============================================================================
+
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+#include "Box.h"
+#include <iostream>
+#include <algorithm>
+using namespace std; 
+
+void Box::SetXMax(double val)
+{
+	this->xMax = val; 
+
+}
+
+void Box::SetXMin(double val)
+{
+	this->xMin = val; 
+
+}
+
+void Box::SetYMin(double val)
+{
+	this->yMin = val;
+}
+
+void Box::SetYMax(double val)
+{
+	this->yMax = val; 
+}
+
+void Box::print()
+{
+	cout << "xMax: " << xMax << endl; 
+	cout << "xMin: " << xMin << endl;
+	cout << "yMax: " << yMax << endl;
+	cout << "yMin: " << yMin << endl;
+
+}
+
+Box operator+(Box left, Box right)
+{
+	Box newLeft, newRight;
+	if (left.GetXMax()>right.GetXMax())
+	{
+		newLeft = right;
+		newRight = left;
+	}
+	else
+	{
+		newLeft = left;
+		newRight = right;
+	}
+	Box result; 
+	if (right.GetXMin() < left.GetXMax() && right.GetYMin() < left.GetYMax()) //check if the boxes collide 
+	{
+		
+		result.SetXMin(min(newLeft.GetXMin(), newRight.GetXMin()));
+		result.SetXMax(max(newLeft.GetXMax(), newRight.GetXMax()));
+		result.SetYMin(min(newLeft.GetYMin(), newRight.GetYMin()));
+		result.SetYMax(max(newLeft.GetYMax(), newRight.GetYMax()));
+		return result;
+	}
+	else
+	{
+		cout << "The boxes of these two objects don't collide." << '\n';
+	}
+	 
+}
+\end{lstlisting}
+\footnotesize{Figure 8 Box Class}
+%=============================================================================
+\subsection{Circle Class}
+%=============================================================================
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+#include "Circle.h"
+
+void Circle::SetUpBox()
+{
+	this->box.SetXMax(this->radius);
+
+	this->box.SetXMin(-this->radius);
+
+	this->box.SetYMax(this->radius);
+
+	this->box.SetYMin(-this->radius);
+}
+
+void Circle::Move(double dX, double dY)
+{
+	Form::Move(dX, dY);
+	MoveBox(dX, dY);
+}
+
+void Circle::MoveBox(double dX, double dY)
+{
+	this->box.SetXMax(box.GetXMax() + dX);
+
+	this->box.SetXMin(box.GetXMin() + dX);
+
+	this->box.SetYMax(box.GetYMax() + dY);
+
+	this->box.SetYMin(box.GetYMin() + dY);
+}
+
+\end{lstlisting}
+\footnotesize{Figure 9 Circle Class}
+
+%=============================================================================
+\subsection{Rectangle Class}
+%=============================================================================
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+#include "Rectangle.h"
+
+void Rectangle::Move(double dX, double dY)
+{
+	Form::Move(dX, dY);
+	MoveBox(dX, dY);
+}
+
+void Rectangle::MoveBox(double dX, double dY)
+{
+	this->box.SetXMax(box.GetXMax()+dX);
+
+	this->box.SetXMin(box.GetXMin()+dX);
+
+	this->box.SetYMax(box.GetYMax()+dY);
+
+	this->box.SetYMin(box.GetYMin()+dY);
+}
+
+void Rectangle::SetUpBox()
+{
+
+	this->box.SetXMax(width / 2);
+
+	this->box.SetXMin(-width / 2);
+
+	this->box.SetYMax(height / 2);
+
+	this->box.SetYMin(-height / 2);
+}
+\end{lstlisting}
+\footnotesize{Figure 10 Rectangle Class}
+%=============================================================================
+\subsection{Main Class}
+%=============================================================================
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+#include <iostream>
+#include <string>
+#include "Circle.h"
+#include "Rectangle.h"
+using namespace std; 
+bool InputIsCircle(string); //checks if the user typed 'circle', returns bool
+bool InputIsRect(string);	//checks if the user typed 'rectangle', returns bool
+Circle* CircleCreator(bool isTrue); //asks for needed values and calls circle constructor
+Rectangle* RectCreator(bool isTrue);//asks for needed values and calls rectangle constructor
+Box AddBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2); 
+int main() {
+
+	double movX, movY;	//arguments for Move(...) function
+	
+	string prompt="";
+	
+	std::cout << "_______________________________________" << endl; 
+
+	Circle *circle1=NULL;
+	Rectangle *rect1=NULL;
+
+	cout << "Enter first form (rectangle or circle): ";
+	cin >> prompt;
+	
+	if (InputIsCircle(prompt))
+	{
+		circle1 = CircleCreator(InputIsCircle(prompt));
+		circle1->GetBoxRef().print();
+
+		cout << "Move Circle in X direction for: ";
+		cin >> movX;
+		cout << "Move Circle in Y direction for: ";
+		cin >> movY;
+		
+		circle1->Move(movX, movY);
+		cout << "After Move is called: " << endl;
+		circle1->GetBoxRef().print();
+
+	}
+	else if (InputIsRect(prompt))
+	{
+		rect1 = RectCreator(InputIsRect(prompt));
+		rect1->GetBoxRef().print();
+
+		cout << "Move Rectangle in X direction for: ";
+		cin >> movX;
+		cout << "Move Rectangle in Y direction for: ";
+		cin >> movY;
+		
+		rect1->Move(movX, movY);
+		cout << "After Move is called: " << endl;
+		rect1->GetBoxRef().print();
+	}
+	
+	Circle *circle2 = NULL;
+	Rectangle *rect2 = NULL;
+	cout << "Enter second form (rectangle or circle): ";
+	cin >> prompt;
+	if (InputIsCircle(prompt))
+	{
+		circle2 = CircleCreator(InputIsCircle(prompt));
+		circle2->GetBoxRef().print();
+
+		cout << "Move Circle in X direction for: ";
+		cin >> movX;
+		cout << "Move Circle in Y direction for: ";
+		cin >> movY;
+
+		circle2->Move(movX, movY);
+		cout << "After Move is called: " << endl;
+		circle2->GetBoxRef().print();
+
+	}
+	else if (InputIsRect(prompt))
+	{
+		rect2 = RectCreator(InputIsRect(prompt));
+		rect2->GetBoxRef().print();
+
+		cout << "Move Rectangle in X direction for: ";
+		cin >> movX;
+		cout << "Move Rectangle in Y direction for: ";
+		cin >> movY;
+
+		rect2->Move(movX, movY);
+		cout << "After Move is called: " << endl;
+		rect2->GetBoxRef().print();
+
+	}
+	
+	
+
+	//ADD BOUNDING BOXES AND PRODUCE NEW ONE AS SUM
+	
+	
+	
+	Box boundingBox;
+
+	cout << "Bounding Box: " << endl; 
+	boundingBox = AddBoxes(circle1, circle2, rect1, rect2);
+	if (!(boundingBox.GetXMax()==0.0 && boundingBox.GetXMin()==0.0 && boundingBox.GetYMin()==0.0 && boundingBox.GetYMax()==0.0))
+	{
+		boundingBox.print();
+	}
+	
+	cout << "_______________________________________" << endl;
+
+	delete circle1, rect1, circle2, rect2; 
+
+	return 0; 
+}
+Box AddBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2) {
+	
+	Box result;
+	if (c1==NULL && c2==NULL)
+	{
+		result = r1->GetBoxRef() + r2->GetBoxRef();
+		return result;
+	}
+	else if (c1==NULL && r2==NULL)
+	{
+		result = r1->GetBoxRef()+ c2->GetBoxRef();
+		return result;
+	}
+	else if (r1==NULL && c2==NULL)
+	{
+		result = c1->GetBoxRef()+ r2->GetBoxRef();
+		return result;
+	}
+	else if (r1==NULL && r2==NULL)
+	{
+		result = c1->GetBoxRef() + c2->GetBoxRef();
+		return result;
+	}
+}
+bool InputIsCircle(string prompt)  {
+	string circle = "circle";
+	bool result = false; 
+	if (prompt.compare(circle) == 0)
+	{
+		result = true; 
+		
+	}
+	else
+	{
+		return result; 
+	}
+}
+bool InputIsRect(string prompt) {
+	string rect = "rectangle";
+	bool result = false;
+	if (prompt.compare(rect) == 0)
+	{
+		result = true; 
+		
+	}
+	else
+	{
+		return result;
+	}
+}
+Circle* CircleCreator(bool isTrue) {
+	if (isTrue)
+	{
+		double rad;
+		
+		cout << "Enter radius: ";
+		cin >> rad;
+		Circle *circle=new Circle(rad);
+		circle->SetUpBox();
+		return circle;
+	}
+	else
+	{
+		return NULL; 
+	}
+
+}
+Rectangle* RectCreator(bool isTrue) {
+	if (isTrue)
+	{
+		double h, w;
+		cout << "Enter height: ";
+		cin >> h;
+		cout << "Enter width: ";
+		cin >> w;
+		Rectangle *rect=new Rectangle(h, w);
+		rect->SetUpBox();
+		return rect; 
+	}
+	else
+	{
+		return NULL;
+	}
+}
+\end{lstlisting}
+\footnotesize{Figure 11 Main Class}
+
+%=============================================================================
+\section{Foundations}
+%=============================================================================
+
+
+
+%-----------------------------------------------------------------------------
+%\subsection{}
+%-----------------------------------------------------------------------------
+
+
+
+%-----------------------------------------------------------------------------
+%\subsection{}
+%-----------------------------------------------------------------------------
+
+%-----------------------------------------------------------------------------
+%\subsection{}
+%-----------------------------------------------------------------------------
+
+
+%=============================================================================
+%\section{}
+%=============================================================================
+
+
+
+%-----------------------------------------------------------------------------
+%\subsection{}
+%-----------------------------------------------------------------------------
+
+
+%=============================================================================
+%\section{}
+%=============================================================================
+
+
+
+%=============================================================================
+\section{Conclusion}
+%=============================================================================
+
+
+\end{document}
+
+\newpage
+
