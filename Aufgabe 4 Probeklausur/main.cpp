@@ -7,7 +7,7 @@ bool InputIsCircle(string); //checks if the user typed 'circle', returns bool
 bool InputIsRect(string);	//checks if the user typed 'rectangle', returns bool
 Circle* CircleCreator(bool isTrue); //asks for needed values and calls circle constructor
 Rectangle* RectCreator(bool isTrue);//asks for needed values and calls rectangle constructor
-Box AddBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2); //adds two bboxes
+Box AddBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2); 
 int main() {
 
 	double movX, movY;	//arguments for Move(...) function
@@ -97,8 +97,11 @@ int main() {
 
 	cout << "Bounding Box: " << endl; 
 	boundingBox = AddBoxes(circle1, circle2, rect1, rect2);
+	if (!(boundingBox.GetXMax()==0.0 && boundingBox.GetXMin()==0.0 && boundingBox.GetYMin()==0.0 && boundingBox.GetYMax()==0.0))
+	{
+		boundingBox.print();
+	}
 	
-	boundingBox.print();
 	cout << "_______________________________________" << endl;
 
 	delete circle1, rect1, circle2, rect2; 
