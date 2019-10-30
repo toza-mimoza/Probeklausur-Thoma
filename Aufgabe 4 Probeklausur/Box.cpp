@@ -36,12 +36,30 @@ void Box::print()
 
 Box operator+(Box left, Box right)
 {
+	Box newLeft, newRight;
+	if (left.GetXMax()>right.GetXMax())
+	{
+		newLeft = right;
+		newRight = left;
+	}
+	else
+	{
+		newLeft = left;
+		newRight = right;
+	}
 	Box result; 
-
-	result.SetXMin(min(left.GetXMin(),right.GetXMin()));
-	result.SetXMax(max(left.GetXMax(), right.GetXMax()));
-	result.SetYMin(min(left.GetYMin(),right.GetYMin()));
-	result.SetYMax(max(left.GetYMax(), right.GetYMax()));
-
-	return result; 
+	if (right.GetXMin() < left.GetXMax() && right.GetYMin() < left.GetYMax()) //check if the boxes collide 
+	{
+		
+		result.SetXMin(min(newLeft.GetXMin(), newRight.GetXMin()));
+		result.SetXMax(max(newLeft.GetXMax(), newRight.GetXMax()));
+		result.SetYMin(min(newLeft.GetYMin(), newRight.GetYMin()));
+		result.SetYMax(max(newLeft.GetYMax(), newRight.GetYMax()));
+		return result;
+	}
+	else
+	{
+		cout << "The boxes of these two objects don't collide." << '\n';
+	}
+	 
 }
