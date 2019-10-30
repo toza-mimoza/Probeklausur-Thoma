@@ -7,9 +7,7 @@ bool InputIsCircle(string); //checks if the user typed 'circle', returns bool
 bool InputIsRect(string);	//checks if the user typed 'rectangle', returns bool
 Circle* CircleCreator(bool isTrue); //asks for needed values and calls circle constructor
 Rectangle* RectCreator(bool isTrue);//asks for needed values and calls rectangle constructor
-Circle* CleanCircles(Circle* circle1, Circle* circle2);	//cleans pointers that are not needed after the prompt
-Rectangle* CleanRectangles(Rectangle* rect1, Rectangle* rect2);
-
+Box AddBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2); //adds two bboxes
 int main() {
 
 	double movX, movY;	//arguments for Move(...) function
@@ -92,60 +90,43 @@ int main() {
 	
 
 	//ADD BOUNDING BOXES AND PRODUCE NEW ONE AS SUM
+	
+	
+	
+	Box boundingBox;
 
-	Circle* circle = CleanCircles(circle1, circle2);
-	Rectangle* rect = CleanRectangles(rect1, rect2);
-
-	Box boundingBox = circle->GetBoxRef() + rect->GetBoxRef();
 	cout << "Bounding Box: " << endl; 
+	boundingBox = AddBoxes(circle1, circle2, rect1, rect2);
+	
 	boundingBox.print();
 	cout << "_______________________________________" << endl;
 
-	delete circle, rect; 
+	delete circle1, rect1, circle2, rect2; 
 
 	return 0; 
 }
-Circle* CleanCircles(Circle* circle1, Circle* circle2)
-{
-	if (circle1 == NULL)
-	{
-		delete circle1;
-	}
-	else
-	{
-		Circle*& circle = circle1;
-		return circle; 
-	}
-	if (circle2 == NULL)
-	{
-		delete circle2;
-	}
-	else
-	{
-		Circle*& circle = circle2;
-		return circle;
-	}
+Box AddBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2) {
 	
-}
-Rectangle* CleanRectangles(Rectangle* rect1, Rectangle* rect2) 
-{
-	if (rect1 == NULL)
+	Box result;
+	if (c1==NULL && c2==NULL)
 	{
-		delete rect1;
+		result = r1->GetBoxRef() + r2->GetBoxRef();
+		return result;
 	}
-	else
+	else if (c1==NULL && r2==NULL)
 	{
-		Rectangle*& rect = rect1;
-		return rect;
+		result = r1->GetBoxRef()+ c2->GetBoxRef();
+		return result;
 	}
-	if (rect2 == NULL)
+	else if (r1==NULL && c2==NULL)
 	{
-		delete rect2;
+		result = c1->GetBoxRef()+ r2->GetBoxRef();
+		return result;
 	}
-	else
+	else if (r1==NULL && r2==NULL)
 	{
-		Rectangle*& rect = rect2;
-		return rect;
+		result = c1->GetBoxRef() + c2->GetBoxRef();
+		return result;
 	}
 }
 bool InputIsCircle(string prompt)  {
