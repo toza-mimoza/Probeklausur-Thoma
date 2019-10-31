@@ -82,12 +82,18 @@ void Fahrzeug::setName(const char *n)
 
 
 
-Fahrzeug& operator=(const Fahrzeug &other) {
-	
+Fahrzeug& Fahrzeug::operator=(const Fahrzeug &other) {
+	delete[] name;
+
+	if (other.name != nullptr) { // handling empty pointer as parameter, preventing strlen from crashing
+		name = new char[strlen(other.name) + 1];
+		strcpy(name, other.name);
+	}
+	return *this;
 }
 
 \end{lstlisting}
-\footnotesize{Figure 1 Fahrzeug Program}\newline
+\scriptsize{Figure 1 Fahrzeug Program}\newline
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -95,95 +101,103 @@ Fahrzeug& operator=(const Fahrzeug &other) {
 \section{Exercise 3}
 %=============================================================================
 %=============================================================================
-\subsection{Ebook Headerfile}
+\subsection{EBook Headerfile}
 %=============================================================================
 
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
 #ifndef _EBOOK_H_
 #define _EBOOK_H_
+
 #include <string>
 #include <iostream>
+
 using namespace std;
-class EBook
-{
+
+class EBook {
 private:
 	string title, content; 
 public:
-	EBook() :title{ "" }, content{ "" } {};
-	EBook(string title, string content) :title{ title }, content{ content }{};
-	void SetTitle(string title);
-	string GetTitle()const;
-	void SetContent(string content);
-	string GetContent()const;
-	void print();
-	friend ostream &operator<<(ostream &output, const EBook& book);
+	EBook();
+	EBook(string title, string content);
+	void setTitle(string title);
+	string getTitle() const;
+	void setContent(string content);
+	string getContent() const;
+	void print() const;
+	friend ostream &operator<<(ostream &output, const EBook &book);
 };
 
-
-#endif // !_EBOOK_H_
+#endif
 
 \end{lstlisting}
-\footnotesize{Figure 2 Header of Ebook Program}\newline
+\scriptsize{Figure 2 Header of EBook Program}\newline
+\newline
+\newline
+In the header file the declaration of the private and the public members of the Ebook class takes place.\newline
+The private members are two Strings named 'title' and 'content'.
+The public members of the class EBook are the default constructor and an overloaded constructor with the parameters title and content.\newline 
+Then we also declared the public 'getter' and 'setter' methods. Furthermore we need a print method and we must overload the \&operator$<<$ method.\newline
 
-\newpage
+%\newpage
 %=============================================================================
-\subsection{Ebook Class}
+\subsection{Implementation of the Ebook Class}
 %=============================================================================
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
 #include "eBook.h"
 #include <iostream>
+
 using namespace std;
-void EBook::SetTitle(string title)
-{
-	if (title!="")
-	{
+
+EBook::EBook() : title(""), content("") {};
+
+EBook::EBook(string title, string content) : title(title), content(content) {};
+
+void EBook::setTitle(string title) {
+	if (title != "") {
 		this->title = title;
-	}
-	else
-	{
+	} else {
 		cout << "Title not set!" << endl;
 	}
 }
 
-string EBook::GetTitle() const
-{
+string EBook::getTitle() const {
 	return this->title;
 }
 
-void EBook::SetContent(string content)
-{
-	if (content != "")
-	{
+void EBook::setContent(string content) {
+	if (content != "") {
 		this->content = content;
-	}
-	else
-	{
+	} else {
 		cout << "Content not set!" << endl;
 	}
 }
 
-string EBook::GetContent() const
-{
+string EBook::getContent() const {
 	return this->content;
 }
 
-void EBook::print()
-{
+void EBook::print() const {
 	cout << "Title: " << this->title << '\n';
-	cout << "Content: " << '\n' <<this->content << '\n';
-
+	cout << "Content: " << this->content << '\n';
 }
 
-ostream & operator<<(ostream & output, const EBook & book)
-{
-	output << "Title: " << book.title << '\n' << "Content: " << book.content << '\n';
-	//or alternatively 
-
-	//output<<book.print()<<'\n';
+ostream & operator<<(ostream &output, const EBook &book) {
+	book.print();
 	return output;
 }
 \end{lstlisting}
-\footnotesize{Figure 3 Ebook class}\newline
+\scriptsize{Figure 3 Implementation of Ebook class}\newline
+\newline
+In the Ebook.cpp file we implemented the declared methods of Ebook.h.\newline
+First we implemented the standard constructor initializing the member variables 'title' and 'content' using an initializer list. \newline
+Furthermore we implemented a overloaded constructor Ebook with the arguments 'title' and 'content' and initialized the 'title' and 'content' with the passed arguments 'title' and 'content'.\newline
+\newline
+Then we implemented the 'getter' and 'setter' methods.(You knnow how they work)\newline
+Also we implemented the 'print' method. This method is for printing the 'title' and the 'content' and we overloaded the \&operater$<<$ function.\newline
+
+
+
+
 %=============================================================================
 \subsection{Main Class}
 %=============================================================================
@@ -191,15 +205,17 @@ ostream & operator<<(ostream & output, const EBook & book)
 \begin{lstlisting}
 #include <iostream>
 #include "eBook.h"
+
 int main() {
 	EBook book("Brown Fox", "The quick brown fox jumps over the lazy dog.");
 	std::cout << book; 
 
-
 	return 0; 
-
+}
 \end{lstlisting}
-\footnotesize{Figure 4 Main class}
+\scriptsize{Figure 4 Main class of Ebook program}\newline
+\newline
+The main method executes the Ebook Class.
 %=============================================================================
 \section{Exercise 4}
 %=============================================================================
@@ -210,131 +226,133 @@ int main() {
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
 #ifndef _BOX_H_
 #define _BOX_H_
-class Box
-{
+
+class Box {
 private:
 	double xMin, xMax, yMin, yMax;
 public:
 	
-	Box():xMin{ 0.0 }, xMax{ 0.0 }, yMin{ 0.0 }, yMax{ 0.0 }{}
-	double GetXMin() const { return xMin; }
-	double GetXMax() const { return xMax; }
-	double GetYMin() const { return yMin; }
-	double GetYMax() const { return yMax; }
-	void SetXMax(double val);
-	void SetXMin(double val);
-	void SetYMin(double val);
-	void SetYMax(double val);
+	Box();
+	double getXMin() const;
+	double getXMax() const;
+	double getYMin() const;
+	double getYMax() const;
+	void setXMax(double val);
+	void setXMin(double val);
+	void setYMin(double val);
+	void setYMax(double val);
 	friend Box operator+(Box left, Box right);
-	void print(); 
+	void print() const;
 };
-
-#endif // !_BOX_H_
+#endif
 \end{lstlisting}
-\footnotesize{Figure 5 Header of Box}
+\scriptsize{Figure 5 Header of Box}\newline
+\newline
+\newline
+In the header file the declaration of the private and the public members of the Box class takes place.\newline
+The private members are four double named 'xMin', 'xMax', 'yMin' and 'yMax'.
+The public members of the class Box are the default constructor.\newline 
+Then we also declared the public 'getter' and 'setter' methods. Furthermore we need also a 'print' method and we musted overload the $+operator<<$ method.\newline
+
 %=============================================================================
 \subsection{Circle Headerfile}
 %=============================================================================
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
 #ifndef _CIRCLE_H_
-#define _CIRLE_H_
+#define _CIRCLE_H_
+
 #include "Form.h"
-class Circle: public Form
+
+class Circle : public Form
 {
 private: 
 	double radius; 
 public:
-	Circle() 
-	{
-		Form();
-		this->box.SetXMax(0.0);
-		this->box.SetXMin(0.0);
-		this->box.SetYMax(0.0);
-		this->box.SetYMin(0.0);
-	}
-	Circle(double rad):radius{rad}{}
-
-	//MOVE FOR CIRCLE
-	void Move(double dX, double dY);
-	void SetUpBox();
+	Circle();
+	Circle(double rad);
+	void move(double dX, double dY);
+	void setUpBox();
 private:
-	void MoveBox(double dX = 0, double dY = 0);
-	
+	void moveBox(double dX = 0, double dY = 0);
 };
-
-#endif // !_CIRCLE_H_
+#endif
 \end{lstlisting}
-\footnotesize{Figure 6 Header of Circle}
+\scriptsize{Figure 6 Header of Circle}\newline
+\newline
+\newline
+In the header file the declaration of the private and the public members of the Circle class takes place.\newline
+The private members are one double with the name 'radius'.
+The public members of the class Circle are the default constructor initialized with the constructor of Form and intialize the x and y coordinates of box.\newline 
+Then we overloaded the Circle constructor with the parameter 'rad' and initialize radius with rad.\newline
+Also we need a move method with the arguments 'dX' and 'dY', a setUpBox method and a private moveBox method with the arguments 'dX' and 'dY.
 %=============================================================================
 \subsection{Form Headerfile}
 %=============================================================================
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
 #ifndef _FORM_H_
 #define _FORM_H_
+
 #include "Box.h"
-class Form
-{
+
+class Form {
 private:
 	double xCenter, yCenter;  
 protected:	
 	Box box; 
 	
 public:
-	Form()
-	{
-		this->xCenter = 0.0;
-		this->yCenter = 0.0;
-	}
-	
-	void Move(double dX, double dY) {
-		this->xCenter += dX;
-		this->yCenter += dY;
-		
-	}
-	Box & GetBoxRef() { //how to get const ref???
-		return box; 
-	}
-};
+	Form();
+	void move(double dX, double dY);
 
-#endif // !_FORM_H_
+	//how to get const ref???
+	Box &getBoxRef();
+};
+#endif
 \end{lstlisting}
-\footnotesize{Figure 7 Header of Form}
+
+\scriptsize{Figure 7 Header of Form}\newline
+\newline
+\newline
+In the header file the declaration of the private and the public members of the Form class takes place.\newline
+The private members are two double with the name 'xCenter' and 'yCenter'.
+The protected member is a Object Box with the name 'box'.
+The public members of the class Form are the default constructor.\newline 
+Also we need a move method with the arguments 'dX' and 'dY' and a method getBoxRef that returns a reference to the attribute Box.\newline
+\newline
 %=============================================================================
 \subsection{Rectangle Headerfile}
 %=============================================================================
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
 #ifndef _RECTANGLE_H_
 #define _RECTANGLE_H_
+
 #include "Form.h"
-class Rectangle: public Form
-{
+
+class Rectangle: public Form {
 private:
 	double width, height; 
 
 public:
-	Rectangle() 
-	{
-		Form();
-		this->box.SetXMax(0.0);
-		this->box.SetXMin(0.0);
-		this->box.SetYMax(0.0);
-		this->box.SetYMin(0.0);
-
-	}
-	Rectangle(double h, double w):height{h},width{w}{}
+	Rectangle();
+	Rectangle(double h, double w);
 	//MOVE FOR RECT
-	void Move(double dX, double dY); 
-	void SetUpBox();
+	void move(double dX, double dY);
+	void setUpBox();
 private:
-	void MoveBox(double dX = 0, double dY = 0);
+	void moveBox(double dX = 0, double dY = 0);
 	
 };
-
-
-
-#endif // !_RECTANGLE_H_
+#endif
 \end{lstlisting}
-\footnotesize{Figure 8 Header of Rectangle}
+\scriptsize{Figure 8 Header of Rectangle}\newline
+\newline
+\newline
+In the header file the declaration of the private and the public members of the Form class takes place.\newline
+The private members are two double with the name 'xCenter' and 'yCenter'.
+The protected member is a Object Box with the name 'box'.
+The public members of the class Form are the default constructor.\newline 
+Also we need a move method with the arguments 'dX' and 'dY' and a method getBoxRef that returns a reference to the attribute Box.\newline
+\newline
 %=============================================================================
 \subsection{Box Class}
 %=============================================================================
@@ -343,106 +361,123 @@ private:
 #include "Box.h"
 #include <iostream>
 #include <algorithm>
-using namespace std; 
 
-void Box::SetXMax(double val)
-{
-	this->xMax = val; 
+using namespace std;
+
+Box::Box() : xMin(0.0), xMax(0.0), yMin(0.0), yMax(0.0) {
 
 }
 
-void Box::SetXMin(double val)
-{
+double Box::getXMin() const {
+	return xMin;
+}
+
+void Box::setXMax(double val) {
+	this->xMax = val;
+}
+
+double Box::getXMax() const {
+	return xMax;
+}
+
+void Box::setXMin(double val) {
 	this->xMin = val; 
-
 }
 
-void Box::SetYMin(double val)
-{
+double Box::getYMin() const {
+	return yMin;
+}
+
+void Box::setYMin(double val) {
 	this->yMin = val;
 }
 
-void Box::SetYMax(double val)
-{
+double Box::getYMax() const {
+	return yMax;
+}
+
+void Box::setYMax(double val) {
 	this->yMax = val; 
 }
 
-void Box::print()
-{
+void Box::print() const {
 	cout << "xMax: " << xMax << endl; 
 	cout << "xMin: " << xMin << endl;
 	cout << "yMax: " << yMax << endl;
 	cout << "yMin: " << yMin << endl;
-
 }
 
-Box operator+(Box left, Box right)
-{
+Box operator+(Box left, Box right) {
 	Box newLeft, newRight;
-	if (left.GetXMax()>right.GetXMax())
-	{
+	if (left.getXMax() > right.getXMax()) {
 		newLeft = right;
 		newRight = left;
-	}
-	else
-	{
+	} else {
 		newLeft = left;
 		newRight = right;
 	}
+
 	Box result; 
-	if (right.GetXMin() < left.GetXMax() && right.GetYMin() < left.GetYMax()) //check if the boxes collide 
-	{
-		
-		result.SetXMin(min(newLeft.GetXMin(), newRight.GetXMin()));
-		result.SetXMax(max(newLeft.GetXMax(), newRight.GetXMax()));
-		result.SetYMin(min(newLeft.GetYMin(), newRight.GetYMin()));
-		result.SetYMax(max(newLeft.GetYMax(), newRight.GetYMax()));
+
+	//check if the boxes collide
+	if (right.getXMin() < left.getXMax() && right.getYMin() < left.getYMax()) {
+		result.setXMin(min(newLeft.getXMin(), newRight.getXMin()));
+		result.setXMax(max(newLeft.getXMax(), newRight.getXMax()));
+		result.setYMin(min(newLeft.getYMin(), newRight.getYMin()));
+		result.setYMax(max(newLeft.getYMax(), newRight.getYMax()));
 		return result;
-	}
-	else
-	{
+	} else {
 		cout << "The boxes of these two objects don't collide." << '\n';
 	}
 	 
 }
 \end{lstlisting}
-\footnotesize{Figure 9 Box Class}
+\scriptsize{Figure 9 Box Class}\newline
+\newline
+\newline
+In the Box class we implemented getter and setter Methods. Also we implemented the print method to show the Min and Max coordinate. Then we overload the  operator$+$ method.
 %=============================================================================
 \subsection{Circle Class}
 %=============================================================================
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
 #include "Circle.h"
 
-void Circle::SetUpBox()
-{
-	this->box.SetXMax(this->radius);
-
-	this->box.SetXMin(-this->radius);
-
-	this->box.SetYMax(this->radius);
-
-	this->box.SetYMin(-this->radius);
+Circle::Circle() : radius(0.0) {
+	Form();
+	this->box.setXMax(0.0);
+	this->box.setXMin(0.0);
+	this->box.setYMax(0.0);
+	this->box.setYMin(0.0);
 }
 
-void Circle::Move(double dX, double dY)
-{
-	Form::Move(dX, dY);
-	MoveBox(dX, dY);
+Circle::Circle(double rad) : radius(rad) {
+
 }
 
-void Circle::MoveBox(double dX, double dY)
-{
-	this->box.SetXMax(box.GetXMax() + dX);
+void Circle::setUpBox() {
+	this->box.setXMax(this->radius);
+	this->box.setXMin(-this->radius);
+	this->box.setYMax(this->radius);
+	this->box.setYMin(-this->radius);
+}
 
-	this->box.SetXMin(box.GetXMin() + dX);
+void Circle::move(double dX, double dY) {
+	Form::move(dX, dY);
+	moveBox(dX, dY);
+}
 
-	this->box.SetYMax(box.GetYMax() + dY);
-
-	this->box.SetYMin(box.GetYMin() + dY);
+void Circle::moveBox(double dX, double dY) {
+	this->box.setXMax(box.getXMax() + dX);
+	this->box.setXMin(box.getXMin() + dX);
+	this->box.setYMax(box.getYMax() + dY);
+	this->box.setYMin(box.getYMin() + dY);
 }
 
 \end{lstlisting}
-\footnotesize{Figure 10 Circle Class}
+\scriptsize{Figure 10 Circle Class}\newline
+\newline
+\newline
+
 
 %=============================================================================
 \subsection{Rectangle Class}
@@ -450,36 +485,41 @@ void Circle::MoveBox(double dX, double dY)
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
 #include "Rectangle.h"
 
-void Rectangle::Move(double dX, double dY)
-{
-	Form::Move(dX, dY);
-	MoveBox(dX, dY);
+Rectangle::Rectangle() : width(0.0), height(0.0) {
+	Form();
+	this->box.setXMax(0.0);
+	this->box.setXMin(0.0);
+	this->box.setYMax(0.0);
+	this->box.setYMin(0.0);
 }
 
-void Rectangle::MoveBox(double dX, double dY)
-{
-	this->box.SetXMax(box.GetXMax()+dX);
+Rectangle::Rectangle(double h, double w) : width(w), height(h) {
 
-	this->box.SetXMin(box.GetXMin()+dX);
-
-	this->box.SetYMax(box.GetYMax()+dY);
-
-	this->box.SetYMin(box.GetYMin()+dY);
 }
 
-void Rectangle::SetUpBox()
+void Rectangle::move(double dX, double dY)
 {
+	Form::move(dX, dY);
+	moveBox(dX, dY);
+}
 
-	this->box.SetXMax(width / 2);
+void Rectangle::moveBox(double dX, double dY) {
+	this->box.setXMax(box.getXMax()+dX);
+	this->box.setXMin(box.getXMin()+dX);
+	this->box.setYMax(box.getYMax()+dY);
+	this->box.setYMin(box.getYMin()+dY);
+}
 
-	this->box.SetXMin(-width / 2);
-
-	this->box.SetYMax(height / 2);
-
-	this->box.SetYMin(-height / 2);
+void Rectangle::setUpBox() {
+	this->box.setXMax(width / 2);
+	this->box.setXMin(-width / 2);
+	this->box.setYMax(height / 2);
+	this->box.setYMin(-height / 2);
 }
 \end{lstlisting}
-\footnotesize{Figure 11 Rectangle Class}
+\scriptsize{Figure 11 Rectangle Class}\newline
+\newline
+\newline
 %=============================================================================
 \subsection{Main Class}
 %=============================================================================
@@ -488,198 +528,184 @@ void Rectangle::SetUpBox()
 #include <string>
 #include "Circle.h"
 #include "Rectangle.h"
+
 using namespace std; 
-bool InputIsCircle(string); //checks if the user typed 'circle', returns bool
-bool InputIsRect(string);	//checks if the user typed 'rectangle', returns bool
-Circle* CircleCreator(bool isTrue); //asks for needed values and calls circle constructor
-Rectangle* RectCreator(bool isTrue);//asks for needed values and calls rectangle constructor
-Box AddBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2); 
+
+//checks if the user typed 'circle', returns bool
+bool inputIsCircle(string);
+
+//checks if the user typed 'rectangle', returns bool
+bool inputIsRect(string);
+
+//asks for needed values and calls circle constructor
+Circle* circleCreator(bool isTrue);
+
+//asks for needed values and calls rectangle constructor
+Rectangle* rectCreator(bool isTrue);
+Box addBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2); 
+
 int main() {
 
-	double movX, movY;	//arguments for Move(...) function
-	
-	string prompt="";
-	
+	//arguments for move(...) function
+	double movX, movY;
+
+	string prompt = "";
+
 	std::cout << "_______________________________________" << endl; 
 
-	Circle *circle1=NULL;
-	Rectangle *rect1=NULL;
+	Circle *circle1 = NULL;
+	Rectangle *rect1 = NULL;
 
 	cout << "Enter first form (rectangle or circle): ";
 	cin >> prompt;
-	
-	if (InputIsCircle(prompt))
-	{
-		circle1 = CircleCreator(InputIsCircle(prompt));
-		circle1->GetBoxRef().print();
+
+	if (inputIsCircle(prompt)) {
+		circle1 = circleCreator(inputIsCircle(prompt));
+		circle1->getBoxRef().print();
 
 		cout << "Move Circle in X direction for: ";
 		cin >> movX;
 		cout << "Move Circle in Y direction for: ";
 		cin >> movY;
-		
-		circle1->Move(movX, movY);
-		cout << "After Move is called: " << endl;
-		circle1->GetBoxRef().print();
 
-	}
-	else if (InputIsRect(prompt))
-	{
-		rect1 = RectCreator(InputIsRect(prompt));
-		rect1->GetBoxRef().print();
+		circle1->move(movX, movY);
+		cout << "After Move is called: " << endl;
+		circle1->getBoxRef().print();
+	} else if (inputIsRect(prompt))	{
+		rect1 = rectCreator(inputIsRect(prompt));
+		rect1->getBoxRef().print();
 
 		cout << "Move Rectangle in X direction for: ";
 		cin >> movX;
 		cout << "Move Rectangle in Y direction for: ";
 		cin >> movY;
-		
-		rect1->Move(movX, movY);
+
+		rect1->move(movX, movY);
 		cout << "After Move is called: " << endl;
-		rect1->GetBoxRef().print();
+		rect1->getBoxRef().print();
 	}
-	
+
 	Circle *circle2 = NULL;
 	Rectangle *rect2 = NULL;
 	cout << "Enter second form (rectangle or circle): ";
 	cin >> prompt;
-	if (InputIsCircle(prompt))
-	{
-		circle2 = CircleCreator(InputIsCircle(prompt));
-		circle2->GetBoxRef().print();
+	if (inputIsCircle(prompt)) {
+		circle2 = circleCreator(inputIsCircle(prompt));
+		circle2->getBoxRef().print();
 
 		cout << "Move Circle in X direction for: ";
 		cin >> movX;
 		cout << "Move Circle in Y direction for: ";
 		cin >> movY;
 
-		circle2->Move(movX, movY);
+		circle2->move(movX, movY);
 		cout << "After Move is called: " << endl;
-		circle2->GetBoxRef().print();
-
-	}
-	else if (InputIsRect(prompt))
-	{
-		rect2 = RectCreator(InputIsRect(prompt));
-		rect2->GetBoxRef().print();
+		circle2->getBoxRef().print();
+	} else if (inputIsRect(prompt)) {
+		rect2 = rectCreator(inputIsRect(prompt));
+		rect2->getBoxRef().print();
 
 		cout << "Move Rectangle in X direction for: ";
 		cin >> movX;
 		cout << "Move Rectangle in Y direction for: ";
 		cin >> movY;
 
-		rect2->Move(movX, movY);
+		rect2->move(movX, movY);
 		cout << "After Move is called: " << endl;
-		rect2->GetBoxRef().print();
-
+		rect2->getBoxRef().print();
 	}
-	
-	
 
 	//ADD BOUNDING BOXES AND PRODUCE NEW ONE AS SUM
-	
-	
-	
 	Box boundingBox;
 
-	cout << "Bounding Box: " << endl; 
-	boundingBox = AddBoxes(circle1, circle2, rect1, rect2);
-	if (!(boundingBox.GetXMax()==0.0 && boundingBox.GetXMin()==0.0 && boundingBox.GetYMin()==0.0 && boundingBox.GetYMax()==0.0))
-	{
+	cout << "Bounding Box: " << endl;
+	boundingBox = addBoxes(circle1, circle2, rect1, rect2);
+	if (!(boundingBox.getXMax() == 0.0 && boundingBox.getXMin() == 0.0 && boundingBox.getYMin() == 0.0 && boundingBox.getYMax() == 0.0)) {
 		boundingBox.print();
 	}
-	
+
 	cout << "_______________________________________" << endl;
 
-	delete circle1, rect1, circle2, rect2; 
+	delete circle1, rect1, circle2, rect2;
 
 	return 0; 
 }
-Box AddBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2) {
-	
+
+Box addBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2) {
+
 	Box result;
-	if (c1==NULL && c2==NULL)
-	{
-		result = r1->GetBoxRef() + r2->GetBoxRef();
+	if (c1 == NULL && c2 == NULL) {
+		result = r1->getBoxRef() + r2->getBoxRef();
 		return result;
-	}
-	else if (c1==NULL && r2==NULL)
-	{
-		result = r1->GetBoxRef()+ c2->GetBoxRef();
+	} else if (c1 == NULL && r2 == NULL) {
+		result = r1->getBoxRef()+ c2->getBoxRef();
 		return result;
-	}
-	else if (r1==NULL && c2==NULL)
-	{
-		result = c1->GetBoxRef()+ r2->GetBoxRef();
+	} else if (r1 == NULL && c2 == NULL) {
+		result = c1->getBoxRef()+ r2->getBoxRef();
 		return result;
-	}
-	else if (r1==NULL && r2==NULL)
-	{
-		result = c1->GetBoxRef() + c2->GetBoxRef();
+	} else if (r1 == NULL && r2 == NULL) {
+		result = c1->getBoxRef() + c2->getBoxRef();
 		return result;
-	}
-}
-bool InputIsCircle(string prompt)  {
-	string circle = "circle";
-	bool result = false; 
-	if (prompt.compare(circle) == 0)
-	{
-		result = true; 
-		
-	}
-	else
-	{
-		return result; 
-	}
-}
-bool InputIsRect(string prompt) {
-	string rect = "rectangle";
-	bool result = false;
-	if (prompt.compare(rect) == 0)
-	{
-		result = true; 
-		
-	}
-	else
-	{
-		return result;
-	}
-}
-Circle* CircleCreator(bool isTrue) {
-	if (isTrue)
-	{
-		double rad;
-		
-		cout << "Enter radius: ";
-		cin >> rad;
-		Circle *circle=new Circle(rad);
-		circle->SetUpBox();
-		return circle;
-	}
-	else
-	{
-		return NULL; 
 	}
 
+	return result;
 }
-Rectangle* RectCreator(bool isTrue) {
-	if (isTrue)
-	{
+
+bool inputIsCircle(string prompt) {
+	string circle = "circle";
+	bool result = false; 
+	if (prompt.compare(circle) == 0) {
+		result = true;
+	} else {
+		return result; 
+	}
+	return result;
+}
+
+bool inputIsRect(string prompt) {
+	string rect = "rectangle";
+	bool result = false;
+	if (prompt.compare(rect) == 0) {
+		result = true; 
+	} else {
+		return result;
+	}
+
+	return result;
+}
+
+Circle* circleCreator(bool isTrue) {
+	if (isTrue) {
+		double rad;
+
+		cout << "Enter radius: ";
+		cin >> rad;
+		Circle *circle = new Circle(rad);
+		circle->setUpBox();
+		return circle;
+	} else {
+		return NULL; 
+	}
+}
+
+Rectangle* rectCreator(bool isTrue) {
+	if (isTrue) {
 		double h, w;
 		cout << "Enter height: ";
 		cin >> h;
 		cout << "Enter width: ";
 		cin >> w;
-		Rectangle *rect=new Rectangle(h, w);
-		rect->SetUpBox();
+		Rectangle *rect = new Rectangle(h, w);
+		rect->setUpBox();
 		return rect; 
-	}
-	else
-	{
+	} else {
 		return NULL;
 	}
 }
 \end{lstlisting}
-\footnotesize{Figure 12 Main Class}
+\scriptsize{Figure 12 Main Class}
+
+
 
 %=============================================================================
 \section{Foundations}
