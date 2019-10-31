@@ -1,28 +1,19 @@
 #ifndef _CIRCLE_H_
-#define _CIRLE_H_
+#define _CIRCLE_H_
+
 #include "Form.h"
-class Circle: public Form
+
+class Circle : public Form
 {
 private: 
 	double radius; 
 public:
-	Circle() 
-	{
-		Form();
-		this->box.SetXMax(0.0);
-		this->box.SetXMin(0.0);
-		this->box.SetYMax(0.0);
-		this->box.SetYMin(0.0);
-	}
-	Circle(double rad):radius{rad}{}
-
-	//MOVE FOR CIRCLE
-	void Move(double dX, double dY);
-	void SetUpBox();
+	Circle();
+	Circle(double rad);
+	void move(double dX, double dY);
+	void setUpBox();
 private:
-	void MoveBox(double dX = 0, double dY = 0);
-	
+	void moveBox(double dX = 0, double dY = 0);
 };
 
-#endif // !_CIRCLE_H_
-
+#endif

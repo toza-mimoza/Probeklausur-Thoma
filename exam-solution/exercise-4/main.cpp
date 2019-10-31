@@ -2,193 +2,177 @@
 #include <string>
 #include "Circle.h"
 #include "Rectangle.h"
+
 using namespace std; 
-bool InputIsCircle(string); //checks if the user typed 'circle', returns bool
-bool InputIsRect(string);	//checks if the user typed 'rectangle', returns bool
-Circle* CircleCreator(bool isTrue); //asks for needed values and calls circle constructor
-Rectangle* RectCreator(bool isTrue);//asks for needed values and calls rectangle constructor
-Box AddBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2); 
+
+//checks if the user typed 'circle', returns bool
+bool inputIsCircle(string);
+
+//checks if the user typed 'rectangle', returns bool
+bool inputIsRect(string);
+
+//asks for needed values and calls circle constructor
+Circle* circleCreator(bool isTrue);
+
+//asks for needed values and calls rectangle constructor
+Rectangle* rectCreator(bool isTrue);
+Box addBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2); 
+
 int main() {
 
-	double movX, movY;	//arguments for Move(...) function
-	
-	string prompt="";
-	
+	//arguments for move(...) function
+	double movX, movY;
+
+	string prompt = "";
+
 	std::cout << "_______________________________________" << endl; 
 
-	Circle *circle1=NULL;
-	Rectangle *rect1=NULL;
+	Circle *circle1 = NULL;
+	Rectangle *rect1 = NULL;
 
 	cout << "Enter first form (rectangle or circle): ";
 	cin >> prompt;
-	
-	if (InputIsCircle(prompt))
-	{
-		circle1 = CircleCreator(InputIsCircle(prompt));
-		circle1->GetBoxRef().print();
+
+	if (inputIsCircle(prompt)) {
+		circle1 = circleCreator(inputIsCircle(prompt));
+		circle1->getBoxRef().print();
 
 		cout << "Move Circle in X direction for: ";
 		cin >> movX;
 		cout << "Move Circle in Y direction for: ";
 		cin >> movY;
-		
-		circle1->Move(movX, movY);
-		cout << "After Move is called: " << endl;
-		circle1->GetBoxRef().print();
 
-	}
-	else if (InputIsRect(prompt))
-	{
-		rect1 = RectCreator(InputIsRect(prompt));
-		rect1->GetBoxRef().print();
+		circle1->move(movX, movY);
+		cout << "After Move is called: " << endl;
+		circle1->getBoxRef().print();
+	} else if (inputIsRect(prompt))	{
+		rect1 = rectCreator(inputIsRect(prompt));
+		rect1->getBoxRef().print();
 
 		cout << "Move Rectangle in X direction for: ";
 		cin >> movX;
 		cout << "Move Rectangle in Y direction for: ";
 		cin >> movY;
-		
-		rect1->Move(movX, movY);
+
+		rect1->move(movX, movY);
 		cout << "After Move is called: " << endl;
-		rect1->GetBoxRef().print();
+		rect1->getBoxRef().print();
 	}
-	
+
 	Circle *circle2 = NULL;
 	Rectangle *rect2 = NULL;
 	cout << "Enter second form (rectangle or circle): ";
 	cin >> prompt;
-	if (InputIsCircle(prompt))
-	{
-		circle2 = CircleCreator(InputIsCircle(prompt));
-		circle2->GetBoxRef().print();
+	if (inputIsCircle(prompt)) {
+		circle2 = circleCreator(inputIsCircle(prompt));
+		circle2->getBoxRef().print();
 
 		cout << "Move Circle in X direction for: ";
 		cin >> movX;
 		cout << "Move Circle in Y direction for: ";
 		cin >> movY;
 
-		circle2->Move(movX, movY);
+		circle2->move(movX, movY);
 		cout << "After Move is called: " << endl;
-		circle2->GetBoxRef().print();
-
-	}
-	else if (InputIsRect(prompt))
-	{
-		rect2 = RectCreator(InputIsRect(prompt));
-		rect2->GetBoxRef().print();
+		circle2->getBoxRef().print();
+	} else if (inputIsRect(prompt)) {
+		rect2 = rectCreator(inputIsRect(prompt));
+		rect2->getBoxRef().print();
 
 		cout << "Move Rectangle in X direction for: ";
 		cin >> movX;
 		cout << "Move Rectangle in Y direction for: ";
 		cin >> movY;
 
-		rect2->Move(movX, movY);
+		rect2->move(movX, movY);
 		cout << "After Move is called: " << endl;
-		rect2->GetBoxRef().print();
-
+		rect2->getBoxRef().print();
 	}
-	
-	
 
 	//ADD BOUNDING BOXES AND PRODUCE NEW ONE AS SUM
-	
-	
-	
 	Box boundingBox;
 
-	cout << "Bounding Box: " << endl; 
-	boundingBox = AddBoxes(circle1, circle2, rect1, rect2);
-	if (!(boundingBox.GetXMax()==0.0 && boundingBox.GetXMin()==0.0 && boundingBox.GetYMin()==0.0 && boundingBox.GetYMax()==0.0))
-	{
+	cout << "Bounding Box: " << endl;
+	boundingBox = addBoxes(circle1, circle2, rect1, rect2);
+	if (!(boundingBox.getXMax() == 0.0 && boundingBox.getXMin() == 0.0 && boundingBox.getYMin() == 0.0 && boundingBox.getYMax() == 0.0)) {
 		boundingBox.print();
 	}
-	
+
 	cout << "_______________________________________" << endl;
 
-	delete circle1, rect1, circle2, rect2; 
+	delete circle1, rect1, circle2, rect2;
 
 	return 0; 
 }
-Box AddBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2) {
-	
+
+Box addBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2) {
+
 	Box result;
-	if (c1==NULL && c2==NULL)
-	{
-		result = r1->GetBoxRef() + r2->GetBoxRef();
+	if (c1 == NULL && c2 == NULL) {
+		result = r1->getBoxRef() + r2->getBoxRef();
 		return result;
-	}
-	else if (c1==NULL && r2==NULL)
-	{
-		result = r1->GetBoxRef()+ c2->GetBoxRef();
+	} else if (c1 == NULL && r2 == NULL) {
+		result = r1->getBoxRef()+ c2->getBoxRef();
 		return result;
-	}
-	else if (r1==NULL && c2==NULL)
-	{
-		result = c1->GetBoxRef()+ r2->GetBoxRef();
+	} else if (r1 == NULL && c2 == NULL) {
+		result = c1->getBoxRef()+ r2->getBoxRef();
 		return result;
-	}
-	else if (r1==NULL && r2==NULL)
-	{
-		result = c1->GetBoxRef() + c2->GetBoxRef();
+	} else if (r1 == NULL && r2 == NULL) {
+		result = c1->getBoxRef() + c2->getBoxRef();
 		return result;
-	}
-}
-bool InputIsCircle(string prompt)  {
-	string circle = "circle";
-	bool result = false; 
-	if (prompt.compare(circle) == 0)
-	{
-		result = true; 
-		
-	}
-	else
-	{
-		return result; 
-	}
-}
-bool InputIsRect(string prompt) {
-	string rect = "rectangle";
-	bool result = false;
-	if (prompt.compare(rect) == 0)
-	{
-		result = true; 
-		
-	}
-	else
-	{
-		return result;
-	}
-}
-Circle* CircleCreator(bool isTrue) {
-	if (isTrue)
-	{
-		double rad;
-		
-		cout << "Enter radius: ";
-		cin >> rad;
-		Circle *circle=new Circle(rad);
-		circle->SetUpBox();
-		return circle;
-	}
-	else
-	{
-		return NULL; 
 	}
 
+	return result;
 }
-Rectangle* RectCreator(bool isTrue) {
-	if (isTrue)
-	{
+
+bool inputIsCircle(string prompt) {
+	string circle = "circle";
+	bool result = false; 
+	if (prompt.compare(circle) == 0) {
+		result = true;
+	} else {
+		return result; 
+	}
+	return result;
+}
+
+bool inputIsRect(string prompt) {
+	string rect = "rectangle";
+	bool result = false;
+	if (prompt.compare(rect) == 0) {
+		result = true; 
+	} else {
+		return result;
+	}
+
+	return result;
+}
+
+Circle* circleCreator(bool isTrue) {
+	if (isTrue) {
+		double rad;
+
+		cout << "Enter radius: ";
+		cin >> rad;
+		Circle *circle = new Circle(rad);
+		circle->setUpBox();
+		return circle;
+	} else {
+		return NULL; 
+	}
+}
+
+Rectangle* rectCreator(bool isTrue) {
+	if (isTrue) {
 		double h, w;
 		cout << "Enter height: ";
 		cin >> h;
 		cout << "Enter width: ";
 		cin >> w;
-		Rectangle *rect=new Rectangle(h, w);
-		rect->SetUpBox();
+		Rectangle *rect = new Rectangle(h, w);
+		rect->setUpBox();
 		return rect; 
-	}
-	else
-	{
+	} else {
 		return NULL;
 	}
 }

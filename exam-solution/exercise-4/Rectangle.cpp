@@ -1,30 +1,33 @@
 #include "Rectangle.h"
 
-void Rectangle::Move(double dX, double dY)
-{
-	Form::Move(dX, dY);
-	MoveBox(dX, dY);
+Rectangle::Rectangle() : width(0.0), height(0.0) {
+	Form();
+	this->box.setXMax(0.0);
+	this->box.setXMin(0.0);
+	this->box.setYMax(0.0);
+	this->box.setYMin(0.0);
 }
 
-void Rectangle::MoveBox(double dX, double dY)
-{
-	this->box.SetXMax(box.GetXMax()+dX);
+Rectangle::Rectangle(double h, double w) : width(w), height(h) {
 
-	this->box.SetXMin(box.GetXMin()+dX);
-
-	this->box.SetYMax(box.GetYMax()+dY);
-
-	this->box.SetYMin(box.GetYMin()+dY);
 }
 
-void Rectangle::SetUpBox()
+void Rectangle::move(double dX, double dY)
 {
+	Form::move(dX, dY);
+	moveBox(dX, dY);
+}
 
-	this->box.SetXMax(width / 2);
+void Rectangle::moveBox(double dX, double dY) {
+	this->box.setXMax(box.getXMax()+dX);
+	this->box.setXMin(box.getXMin()+dX);
+	this->box.setYMax(box.getYMax()+dY);
+	this->box.setYMin(box.getYMin()+dY);
+}
 
-	this->box.SetXMin(-width / 2);
-
-	this->box.SetYMax(height / 2);
-
-	this->box.SetYMin(-height / 2);
+void Rectangle::setUpBox() {
+	this->box.setXMax(width / 2);
+	this->box.setXMin(-width / 2);
+	this->box.setYMax(height / 2);
+	this->box.setYMin(-height / 2);
 }

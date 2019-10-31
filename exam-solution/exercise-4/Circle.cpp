@@ -1,30 +1,32 @@
 #include "Circle.h"
 
-void Circle::SetUpBox()
-{
-	this->box.SetXMax(this->radius);
-
-	this->box.SetXMin(-this->radius);
-
-	this->box.SetYMax(this->radius);
-
-	this->box.SetYMin(-this->radius);
+Circle::Circle() : radius(0.0) {
+	Form();
+	this->box.setXMax(0.0);
+	this->box.setXMin(0.0);
+	this->box.setYMax(0.0);
+	this->box.setYMin(0.0);
 }
 
-void Circle::Move(double dX, double dY)
-{
-	Form::Move(dX, dY);
-	MoveBox(dX, dY);
+Circle::Circle(double rad) : radius(rad) {
+
 }
 
-void Circle::MoveBox(double dX, double dY)
-{
-	this->box.SetXMax(box.GetXMax() + dX);
-
-	this->box.SetXMin(box.GetXMin() + dX);
-
-	this->box.SetYMax(box.GetYMax() + dY);
-
-	this->box.SetYMin(box.GetYMin() + dY);
+void Circle::setUpBox() {
+	this->box.setXMax(this->radius);
+	this->box.setXMin(-this->radius);
+	this->box.setYMax(this->radius);
+	this->box.setYMin(-this->radius);
 }
 
+void Circle::move(double dX, double dY) {
+	Form::move(dX, dY);
+	moveBox(dX, dY);
+}
+
+void Circle::moveBox(double dX, double dY) {
+	this->box.setXMax(box.getXMax() + dX);
+	this->box.setXMin(box.getXMin() + dX);
+	this->box.setYMax(box.getYMax() + dY);
+	this->box.setYMin(box.getYMin() + dY);
+}
