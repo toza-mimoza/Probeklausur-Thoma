@@ -1,52 +1,42 @@
 #include "eBook.h"
 #include <iostream>
+
 using namespace std;
-void EBook::SetTitle(string title)
-{
-	if (title!="")
-	{
+
+EBook::EBook() : title(""), content("") {};
+
+EBook::EBook(string title, string content) : title(title), content(content) {};
+
+void EBook::setTitle(string title) {
+	if (title != "") {
 		this->title = title;
-	}
-	else
-	{
+	} else {
 		cout << "Title not set!" << endl;
 	}
 }
 
-string EBook::GetTitle() const
-{
+string EBook::getTitle() const {
 	return this->title;
 }
 
-void EBook::SetContent(string content)
-{
-	if (content != "")
-	{
+void EBook::setContent(string content) {
+	if (content != "") {
 		this->content = content;
-	}
-	else
-	{
+	} else {
 		cout << "Content not set!" << endl;
 	}
 }
 
-string EBook::GetContent() const
-{
+string EBook::getContent() const {
 	return this->content;
 }
 
-void EBook::print()
-{
+void EBook::print() const {
 	cout << "Title: " << this->title << '\n';
-	cout << "Content: " << '\n' <<this->content << '\n';
-
+	cout << "Content: " << this->content << '\n';
 }
 
-ostream & operator<<(ostream & output, const EBook & book)
-{
-	output << "Title: " << book.title << '\n' << "Content: " << book.content << '\n';
-	//or alternatively 
-
-	//output<<book.print()<<'\n';
+ostream & operator<<(ostream &output, const EBook &book) {
+	book.print();
 	return output;
 }
