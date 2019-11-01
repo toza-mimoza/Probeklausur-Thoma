@@ -9,7 +9,6 @@ void Form::move(double dX, double dY) {
 	this->yCenter += dY;
 }
 
-//how to get const ref???
 Box & Form::getBoxRef() {
 	return box;
 }
