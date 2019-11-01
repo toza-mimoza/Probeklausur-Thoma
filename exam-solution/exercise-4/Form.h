@@ -12,8 +12,6 @@ protected:
 public:
 	Form();
 	void move(double dX, double dY);
-
-	//how to get const ref???
 	Box &getBoxRef();
 };
 
