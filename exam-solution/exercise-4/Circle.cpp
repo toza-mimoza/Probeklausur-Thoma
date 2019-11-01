@@ -12,7 +12,7 @@ Circle::Circle(double rad) : radius(rad) {
 
 }
 
-void Circle::setUpBox() {
+void Circle::initBox() {
 	this->box.setXMax(this->radius);
 	this->box.setXMin(-this->radius);
 	this->box.setYMax(this->radius);
