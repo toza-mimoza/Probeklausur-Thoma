@@ -1,11 +1,7 @@
 #include "Circle.h"
 
 Circle::Circle() : radius(0.0) {
-	Form();
-	this->box.setXMax(0.0);
-	this->box.setXMin(0.0);
-	this->box.setYMax(0.0);
-	this->box.setYMin(0.0);
+	
 }
 
 Circle::Circle(double rad) : radius(rad) {
