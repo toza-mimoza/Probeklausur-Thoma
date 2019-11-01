@@ -25,7 +25,7 @@ void Rectangle::moveBox(double dX, double dY) {
 	this->box.setYMin(box.getYMin()+dY);
 }
 
-void Rectangle::setUpBox() {
+void Rectangle::initBox() {
 	this->box.setXMax(width / 2);
 	this->box.setXMin(-width / 2);
 	this->box.setYMax(height / 2);
