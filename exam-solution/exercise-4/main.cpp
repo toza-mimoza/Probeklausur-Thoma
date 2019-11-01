@@ -155,7 +155,7 @@ Circle* circleCreator(bool isTrue) {
 		cout << "Enter radius: ";
 		cin >> rad;
 		Circle *circle = new Circle(rad);
-		circle->setUpBox();
+		circle->initBox();
 		return circle;
 	} else {
 		return NULL; 
@@ -170,7 +170,7 @@ Rectangle* rectCreator(bool isTrue) {
 		cout << "Enter width: ";
 		cin >> w;
 		Rectangle *rect = new Rectangle(h, w);
-		rect->setUpBox();
+		rect->initBox();
 		return rect; 
 	} else {
 		return NULL;
