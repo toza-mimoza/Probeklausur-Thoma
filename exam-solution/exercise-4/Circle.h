@@ -11,7 +11,7 @@ public:
 	Circle();
 	Circle(double rad);
 	void move(double dX, double dY);
-	void setUpBox();
+	void initBox();
 private:
 	void moveBox(double dX = 0, double dY = 0);
 };
