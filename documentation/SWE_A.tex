@@ -271,7 +271,7 @@ public:
 	Circle();
 	Circle(double rad);
 	void move(double dX, double dY);
-	void initBox();
+	void setUpBox();
 private:
 	void moveBox(double dX = 0, double dY = 0);
 };
@@ -303,6 +303,7 @@ protected:
 public:
 	Form();
 	void move(double dX, double dY);
+	//how to get const ref???
 	Box &getBoxRef();
 };
 #endif
@@ -334,7 +335,7 @@ public:
 	Rectangle();
 	Rectangle(double h, double w);
 	void move(double dX, double dY);
-	void initBox();
+	void setUpBox();
 private:
 	void moveBox(double dX = 0, double dY = 0);
 	
@@ -451,7 +452,7 @@ Circle::Circle(double rad) : radius(rad) {
 
 }
 
-void Circle::initBox() {
+void Circle::setUpBox() {
 	this->box.setXMax(this->radius);
 	this->box.setXMin(-this->radius);
 	this->box.setYMax(this->radius);
@@ -507,7 +508,7 @@ void Rectangle::moveBox(double dX, double dY) {
 	this->box.setYMin(box.getYMin()+dY);
 }
 
-void Rectangle::initBox() {
+void Rectangle::setUpBox() {
 	this->box.setXMax(width / 2);
 	this->box.setXMin(-width / 2);
 	this->box.setYMax(height / 2);
@@ -678,7 +679,7 @@ Circle* circleCreator(bool isTrue) {
 		cout << "Enter radius: ";
 		cin >> rad;
 		Circle *circle = new Circle(rad);
-		circle->initBox();
+		circle->setUpBox();
 		return circle;
 	} else {
 		return NULL; 
@@ -693,7 +694,7 @@ Rectangle* rectCreator(bool isTrue) {
 		cout << "Enter width: ";
 		cin >> w;
 		Rectangle *rect = new Rectangle(h, w);
-		rect->initBox();
+		rect->setUpBox();
 		return rect; 
 	} else {
 		return NULL;
