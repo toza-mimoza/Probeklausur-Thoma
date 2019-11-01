@@ -1,11 +1,7 @@
 #include "Rectangle.h"
 
 Rectangle::Rectangle() : width(0.0), height(0.0) {
-	Form();
-	this->box.setXMax(0.0);
-	this->box.setXMin(0.0);
-	this->box.setYMax(0.0);
-	this->box.setYMin(0.0);
+	
 }
 
 Rectangle::Rectangle(double h, double w) : width(w), height(h) {
