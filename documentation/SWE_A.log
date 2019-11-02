@@ -1,11 +1,8 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.1.29)  31 OCT 2019 14:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.1.29)  2 NOV 2019 01:28
 entering extended mode
 **./SWE_A.tex
 (SWE_A.tex
 LaTeX2e <2018-12-01>
-(llncs.cls
-Document Class: llncs 2015/06/24 v2.20 
- LaTeX document class for Lecture Notes in Computer Science
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\article.cls"
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/base\size10.clo"
@@ -22,110 +19,6 @@ File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/tools\multicol.s
-ty"
-Package: multicol 2018/11/09 v1.8u multicolumn formatting (FMi)
-\c@tracingmulticols=\count88
-\mult@box=\box27
-\multicol@leftmargin=\dimen103
-\c@unbalance=\count89
-\c@collectmore=\count90
-\doublecol@number=\count91
-\multicoltolerance=\count92
-\multicolpretolerance=\count93
-\full@width=\dimen104
-\page@free=\dimen105
-\premulticols=\dimen106
-\postmulticols=\dimen107
-\multicolsep=\skip43
-\multicolbaselineskip=\skip44
-\partial@page=\box28
-\last@line=\box29
-\maxbalancingoverflow=\dimen108
-\mult@rightbox=\box30
-\mult@grightbox=\box31
-\mult@gfirstbox=\box32
-\mult@firstbox=\box33
-\@tempa=\box34
-\@tempa=\box35
-\@tempa=\box36
-\@tempa=\box37
-\@tempa=\box38
-\@tempa=\box39
-\@tempa=\box40
-\@tempa=\box41
-\@tempa=\box42
-\@tempa=\box43
-\@tempa=\box44
-\@tempa=\box45
-\@tempa=\box46
-\@tempa=\box47
-\@tempa=\box48
-\@tempa=\box49
-\@tempa=\box50
-\c@columnbadness=\count94
-\c@finalcolumnbadness=\count95
-\last@try=\dimen109
-\multicolovershoot=\dimen110
-\multicolundershoot=\dimen111
-\mult@nat@firstbox=\box51
-\colbreak@box=\box52
-\mc@col@check@num=\count96
-)
-("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\aliascnt.
-sty"
-Package: aliascnt 2018/09/07 v1.5 Alias counters (HO)
-)
-\c@chapter=\count97
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 362.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 363.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 364.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 365.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 366.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 367.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 368.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 369.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 370.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 371.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 372.
-\tocchpnum=\dimen112
-\tocsecnum=\dimen113
-\tocsectotal=\dimen114
-\tocsubsecnum=\dimen115
-\tocsubsectotal=\dimen116
-\tocsubsubsecnum=\dimen117
-\tocsubsubsectotal=\dimen118
-\tocparanum=\dimen119
-\tocparatotal=\dimen120
-\tocsubparanum=\dimen121
-\@tempcntc=\count98
-\fnindent=\dimen122
-\c@@inst=\count99
-\c@@auth=\count100
-\c@auco=\count101
-\instindent=\dimen123
-\authrun=\box53
-\authorrunning=\toks14
-\tocauthor=\toks15
-\titrun=\box54
-\titlerunning=\toks16
-\toctitle=\toks17
-\c@theorem=\count102
-\c@case=\count103
-\c@conjecture=\count104
-\c@corollary=\count105
-\c@definition=\count106
-\c@example=\count107
-\c@exercise=\count108
-\c@lemma=\count109
-\c@note=\count110
-\c@problem=\count111
-\c@property=\count112
-\c@proposition=\count113
-\c@question=\count114
-\c@solution=\count115
-\c@remark=\count116
-\headlineindent=\dimen124
 )
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\epsfig.st
 y"
@@ -138,7 +31,7 @@ Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\keyval.st
 y"
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks18
+\KV@toks@=\toks14
 )
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/graphics\graphics.
 sty"
@@ -157,11 +50,11 @@ Package graphics Info: Driver file: pdftex.def on input line 99.
 x.def"
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen125
-\Gin@req@width=\dimen126
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
 )
-\epsfxsize=\dimen127
-\epsfysize=\dimen128
+\epsfxsize=\dimen105
+\epsfysize=\dimen106
 )
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amssymb.s
 ty"
@@ -170,7 +63,7 @@ Package: amssymb 2013/01/14 v3.01 AMS font symbols
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\amsfonts.
 sty"
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\@emptytoks=\toks19
+\@emptytoks=\toks15
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
@@ -179,7 +72,7 @@ LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsmath.st
 y"
 Package: amsmath 2018/12/01 v2.17b AMS math features
-\@mathmargin=\skip45
+\@mathmargin=\skip43
 
 For additional information on amsmath, use the `?' option.
 
@@ -190,81 +83,77 @@ Package: amstext 2000/06/29 v2.01 AMS text
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsgen.sty
 "
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks20
-\ex@=\dimen129
+\@emptytoks=\toks16
+\ex@=\dimen107
 ))
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsbsy.sty
 "
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen130
+\pmbraise@=\dimen108
 )
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsmath\amsopn.sty
 "
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count117
+\inf@bad=\count88
 LaTeX Info: Redefining \frac on input line 223.
-\uproot@=\count118
-\leftroot@=\count119
+\uproot@=\count89
+\leftroot@=\count90
 LaTeX Info: Redefining \overline on input line 385.
-\classnum@=\count120
-\DOTSCASE@=\count121
+\classnum@=\count91
+\DOTSCASE@=\count92
 LaTeX Info: Redefining \ldots on input line 482.
 LaTeX Info: Redefining \dots on input line 485.
 LaTeX Info: Redefining \cdots on input line 606.
-\Mathstrutbox@=\box55
-\strutbox@=\box56
-\big@size=\dimen131
+\Mathstrutbox@=\box27
+\strutbox@=\box28
+\big@size=\dimen109
 LaTeX Font Info:    Redeclaring font encoding OML on input line 729.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 730.
-
-
-Package amsmath Warning: Unable to redefine math accent \vec.
-
-\macc@depth=\count122
-\c@MaxMatrixCols=\count123
+\macc@depth=\count93
+\c@MaxMatrixCols=\count94
 \dotsspace@=\muskip10
-\c@parentequation=\count124
-\dspbrk@lvl=\count125
-\tag@help=\toks21
-\row@=\count126
-\column@=\count127
-\maxfields@=\count128
-\andhelp@=\toks22
-\eqnshift@=\dimen132
-\alignsep@=\dimen133
-\tagshift@=\dimen134
-\tagwidth@=\dimen135
-\totwidth@=\dimen136
-\lineht@=\dimen137
-\@envbody=\toks23
-\multlinegap=\skip46
-\multlinetaggap=\skip47
-\mathdisplay@stack=\toks24
+\c@parentequation=\count95
+\dspbrk@lvl=\count96
+\tag@help=\toks17
+\row@=\count97
+\column@=\count98
+\maxfields@=\count99
+\andhelp@=\toks18
+\eqnshift@=\dimen110
+\alignsep@=\dimen111
+\tagshift@=\dimen112
+\tagwidth@=\dimen113
+\totwidth@=\dimen114
+\lineht@=\dimen115
+\@envbody=\toks19
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks20
 LaTeX Info: Redefining \[ on input line 2844.
 LaTeX Info: Redefining \] on input line 2845.
 )
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listings.
 sty"
-\lst@mode=\count129
-\lst@gtempboxa=\box57
-\lst@token=\toks25
-\lst@length=\count130
-\lst@currlwidth=\dimen138
-\lst@column=\count131
-\lst@pos=\count132
-\lst@lostspace=\dimen139
-\lst@width=\dimen140
-\lst@newlines=\count133
-\lst@lineno=\count134
-\lst@maxwidth=\dimen141
+\lst@mode=\count100
+\lst@gtempboxa=\box29
+\lst@token=\toks21
+\lst@length=\count101
+\lst@currlwidth=\dimen116
+\lst@column=\count102
+\lst@pos=\count103
+\lst@lostspace=\dimen117
+\lst@width=\dimen118
+\lst@newlines=\count104
+\lst@lineno=\count105
+\lst@maxwidth=\dimen119
 
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\lstmisc.s
 ty"
 File: lstmisc.sty 2018/09/02 1.7 (Carsten Heinz)
-\c@lstnumber=\count135
-\lst@skipnumbers=\count136
-\lst@framebox=\box58
+\c@lstnumber=\count106
+\lst@skipnumbers=\count107
+\lst@framebox=\box30
 )
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/listings\listings.
 cfg"
@@ -304,17 +193,17 @@ LaTeX Font Info:    ... okay on input line 41.
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/context/base\supp-pdf.mk
 ii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count137
-\scratchdimen=\dimen142
-\scratchbox=\box59
-\nofMPsegments=\count138
-\nofMParguments=\count139
-\everyMPshowfont=\toks26
-\MPscratchCnt=\count140
-\MPscratchDim=\dimen143
-\MPnumerator=\count141
-\makeMPintoPDFobject=\count142
-\everyMPtoPDFconversion=\toks27
+\scratchcounter=\count108
+\scratchdimen=\dimen120
+\scratchbox=\box31
+\nofMPsegments=\count109
+\nofMParguments=\count110
+\everyMPshowfont=\toks22
+\MPscratchCnt=\count111
+\MPscratchDim=\dimen121
+\MPnumerator=\count112
+\makeMPintoPDFobject=\count113
+\everyMPtoPDFconversion=\toks23
 )
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/oberdiek\epstopdf-
 base.sty"
@@ -374,193 +263,87 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-\c@lstlisting=\count143
-LaTeX Font Info:    Try loading font information for U+msa on input line 61.
+\c@lstlisting=\count114
+LaTeX Font Info:    Try loading font information for U+msa on input line 65.
 
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 61.
+LaTeX Font Info:    Try loading font information for U+msb on input line 65.
 ("C:\Users\sthan\AppData\Local\Programs\MiKTeX 2.9\tex/latex/amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Underfull \hbox (badness 10000) in paragraph at lines 96--97
+) (SWE_A.toc)
+\tf@toc=\write3
+\openout3 = `SWE_A.toc'.
+
+ (SWE_A.lof [1
+
+{C:/Users/sthan/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}])
+\tf@lof=\write4
+\openout4 = `SWE_A.lof'.
+
+ [2] [3]
+Underfull \hbox (badness 10000) in paragraph at lines 145--149
 
  []
 
-[1
-
-{C:/Users/sthan/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 133--140
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--140
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 133--140
-
- []
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 189--197
+[4] [5]
+Underfull \hbox (badness 10000) in paragraph at lines 258--263
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 189--197
+Underfull \hbox (badness 10000) in paragraph at lines 258--263
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 189--197
-
- []
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 216--220
+[6] [7] [8]
+Underfull \hbox (badness 10000) in paragraph at lines 347--352
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 249--256
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 249--256
+[9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 436--437
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 249--256
-
- []
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 280--289
+[11]
+Underfull \hbox (badness 10000) in paragraph at lines 480--482
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 280--289
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 313--323
+[12]
+Underfull \hbox (badness 10000) in paragraph at lines 525--527
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 313--323
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 313--323
+[13] [14] [15] [16]
+Underfull \hbox (badness 10000) in paragraph at lines 714--716
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 313--323
-
- []
-
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 347--357
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 347--357
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 347--357
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 347--357
-
- []
-
-[6]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [7]
-Underfull \hbox (badness 10000) in paragraph at lines 435--440
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 435--440
-
- []
-
-[8]
-Underfull \hbox (badness 10000) in paragraph at lines 477--480
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 477--480
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 477--480
-
- []
-
-[9]
-Underfull \hbox (badness 10000) in paragraph at lines 520--524
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 520--524
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 520--524
-
- []
-
-[10]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [12]
-[13] (SWE_A.aux) ) 
+[17] (SWE_A.aux) ) 
 Here is how much of TeX's memory you used:
- 4571 strings out of 492946
- 60893 string characters out of 3126266
- 365126 words of memory out of 3000000
- 8417 multiletter control sequences out of 15000+200000
- 7323 words of font info for 29 fonts, out of 3000000 for 9000
+ 4196 strings out of 492946
+ 56353 string characters out of 3126266
+ 358246 words of memory out of 3000000
+ 8036 multiletter control sequences out of 15000+200000
+ 12137 words of font info for 48 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,40p,333b,1661s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,6n,40p,508b,1658s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/sthan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmbx10.pfb><C:/Users/sthan/AppData/Local/Programs/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/sthan/AppData/Local/Progr
-ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Users/sthan/AppData
-/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/s
-than/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb>
-<C:/Users/sthan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/c
-m/cmr9.pfb><C:/Users/sthan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmtt9.pfb>
-Output written on SWE_A.pdf (13 pages, 127899 bytes).
+ams/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/sthan/AppDat
+a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/
+sthan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pf
+b><C:/Users/sthan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
+/cm/cmr17.pfb><C:/Users/sthan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+lic/amsfonts/cm/cmtt8.pfb><C:/Users/sthan/AppData/Local/Programs/MiKTeX 2.9/fon
+ts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on SWE_A.pdf (17 pages, 139336 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
+ 89 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

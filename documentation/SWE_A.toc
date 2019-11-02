@@ -1,0 +1,15 @@
+\contentsline {section}{\numberline {1}Exercise 2}{3}% 
+\contentsline {subsection}{\numberline {1.1}Fahrzeug }{3}% 
+\contentsline {section}{\numberline {2}Exercise 3}{4}% 
+\contentsline {subsection}{\numberline {2.1}EBook Headerfile}{4}% 
+\contentsline {subsection}{\numberline {2.2}Implementation of the EBook class}{5}% 
+\contentsline {subsection}{\numberline {2.3}Main class}{6}% 
+\contentsline {section}{\numberline {3}Exercise 4}{6}% 
+\contentsline {subsection}{\numberline {3.1}Box Headerfile}{6}% 
+\contentsline {subsection}{\numberline {3.2}Circle Headerfile}{8}% 
+\contentsline {subsection}{\numberline {3.3}Form Headerfile}{8}% 
+\contentsline {subsection}{\numberline {3.4}Rectangle Headerfile}{9}% 
+\contentsline {subsection}{\numberline {3.5}Implementation of the Box class}{10}% 
+\contentsline {subsection}{\numberline {3.6}Circle Class}{12}% 
+\contentsline {subsection}{\numberline {3.7}Implementation of the Rectangle Class}{13}% 
+\contentsline {subsection}{\numberline {3.8}Implementation of the Main Class}{14}% 
