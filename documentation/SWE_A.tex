@@ -265,6 +265,14 @@ As public members we have a default constructor called 'Form()', a 'move' method
 %=============================================================================
 
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+#include "Form.h"
+
+Form::Form() : xCenter(0.0), yCenter(0.0) {
+
+}
+
+void Form::move(double dX, double dY) {
+	this->xCenter += dX;
 	this->yCenter += dY;
 }
 
