@@ -76,7 +76,7 @@ Frankfurt University of Applied Sciences \\}
   \scriptsize{\caption{Fahrzeug Program}}
 \end{figure}
 %=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
 void Fahrzeug::setName(const char *n)
 {
      if (name != nullptr) {
@@ -116,7 +116,7 @@ Fahrzeug& Fahrzeug::operator=(const Fahrzeug &other) {
 \end{figure}
 %=============================================================================
 
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
 #ifndef _EBOOK_H_
 #define _EBOOK_H_
 
@@ -155,7 +155,7 @@ Then we also declared the public 'getter' and 'setter' methods. Furthermore we n
   \scriptsize{\caption{Implementation of EBook class}}
 \end{figure}
 %=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
 #include "eBook.h"
 #include <iostream>
 
@@ -213,7 +213,7 @@ Also we implemented the 'print' method. This method is for printing the 'title' 
   \scriptsize{\caption{Header of Form class}}
 \end{figure}
 %=============================================================================
-\begin{lstlisting}
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
 #include <iostream>
 #include "eBook.h"
 
@@ -232,7 +232,7 @@ int main() {
 %=============================================================================
 \subsection{Form Headerfile}
 %=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
 #ifndef _FORM_H_
 #define _FORM_H_
 
@@ -262,7 +262,7 @@ As public members we have a default constructor called 'Form()', a 'move' method
 \end{figure}
 %=============================================================================
 
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
 #include "Form.h"
 
 Form::Form() : xCenter(0.0), yCenter(0.0) {
@@ -287,7 +287,7 @@ Box & Form::getBoxRef() {
 \end{figure}
 %=============================================================================
 
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
 #ifndef _BOX_H_
 #define _BOX_H_
 
@@ -325,7 +325,7 @@ public:
   \scriptsize{\caption{Box class Implementation}}
 \end{figure}
 %=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
 #include "Box.h"
 #include <iostream>
 #include <algorithm>
@@ -413,7 +413,7 @@ The overloaded operator '+' checks if the bounding boxes collide and if so, disp
 \scriptsize{\caption{Header of Circle class}}
 \end{figure}
 %=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
 #ifndef _CIRCLE_H_
 #define _CIRCLE_H_
 
@@ -450,7 +450,7 @@ The public methods are two overloaded constructors 'Circle()' and 'Circle(double
 \scriptsize{\caption{Circle class Implementation}}
 \end{figure}
 %=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
 #include "Circle.h"
 
 Circle::Circle() : radius(0.0) {
@@ -500,7 +500,7 @@ The overloaded method 'move' calls the 'move' function of its base class 'Form' 
 \scriptsize{\caption{Header of Rectangle class}}
 \end{figure}
 %=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
 #ifndef _RECTANGLE_H_
 #define _RECTANGLE_H_
 
@@ -533,7 +533,7 @@ The public methods are an overloaded default constructor, a second overloaded co
 \scriptsize{\caption{Rectangle class Implementation}}
 \end{figure}
 %=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
 #include "Rectangle.h"
 
 Rectangle::Rectangle() : width(0.0), height(0.0) {
@@ -576,7 +576,7 @@ The overloaded method 'move' calls the 'move' function of the 'Form' class and c
 \scriptsize{\caption{Main class Implementation}}
 \end{figure}
 %=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
+\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
 #include <iostream>
 #include <string>
 #include "Circle.h"

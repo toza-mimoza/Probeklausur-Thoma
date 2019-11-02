@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.1.29)  2 NOV 2019 11:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6930 64-bit) (preloaded format=pdflatex 2019.1.29)  2 NOV 2019 13:59
 entering extended mode
 **./SWE_A.tex
 (SWE_A.tex
@@ -287,60 +287,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 145--149
 
  []
 
-[4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 253--258
-
- []
-
-[6] [7]
-Underfull \hbox (badness 10000) in paragraph at lines 315--325
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 315--325
+[4] [5] [6] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 313--319
 
  []
 
 [8] [9] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 410--414
+Underfull \hbox (badness 10000) in paragraph at lines 404--408
 
  []
 
 [11]
-Underfull \hbox (badness 10000) in paragraph at lines 442--448
+Underfull \hbox (badness 10000) in paragraph at lines 436--442
 
  []
 
 [12]
-Underfull \hbox (badness 10000) in paragraph at lines 494--501
+Underfull \hbox (badness 10000) in paragraph at lines 488--495
 
  []
 
-[13]
-Underfull \hbox (badness 10000) in paragraph at lines 530--540
+[13] [14] [15] [16] [17] [18] [19]
+Underfull \hbox (badness 10000) in paragraph at lines 758--773
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 530--540
-
- []
-
-[14] [15] [16] [17] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 771--786
-
- []
-
-[19] (SWE_A.aux) ) 
+[20] (SWE_A.aux) ) 
 Here is how much of TeX's memory you used:
- 4197 strings out of 492946
- 56365 string characters out of 3126266
- 358246 words of memory out of 3000000
- 8037 multiletter control sequences out of 15000+200000
- 12137 words of font info for 48 fonts, out of 3000000 for 9000
+ 4192 strings out of 492946
+ 56316 string characters out of 3126266
+ 356246 words of memory out of 3000000
+ 8034 multiletter control sequences out of 15000+200000
+ 11671 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 41i,6n,40p,515b,1658s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,6n,40p,517b,1664s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/sthan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
 /public/amsfonts/cm/cmbx10.pfb><C:/Users/sthan/AppData/Local/Programs/MiKTeX 2.
 9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/sthan/AppData/Local/Progr
@@ -349,11 +329,10 @@ a/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/
 sthan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr12.pf
 b><C:/Users/sthan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts
 /cm/cmr17.pfb><C:/Users/sthan/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
-lic/amsfonts/cm/cmtt8.pfb><C:/Users/sthan/AppData/Local/Programs/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on SWE_A.pdf (19 pages, 148087 bytes).
+lic/amsfonts/cm/cmtt8.pfb>
+Output written on SWE_A.pdf (20 pages, 132481 bytes).
 PDF statistics:
- 96 PDF objects out of 1000 (max. 8388607)
+ 95 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
