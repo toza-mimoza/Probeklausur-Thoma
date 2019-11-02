@@ -45,16 +45,16 @@
 %                       {-18\p@ \@plus %-4\p@ \@minus -4\p@}%
 %                       {\lineskip}%
 %                       {\normalfont%\normalsize\bfseries%
- %                      \boldmath%
- %                      \classtableofcontents}}
+%                      \boldmath%
+%                      \classtableofcontents}}
 %\makeatother
 
 
 \title{Software Engineering Analysis Scientific Report}
 
- % abbreviated author list (for running head)
+% abbreviated author list (for running head)
 \author{Kendra Birringer (1229372) \\ Nader Cacace (1208115) \\ Steffen Hanzlik (1207417) \\ Marco Peluso (1228849) \\ Svetozar Stojanovic (1262287)\\
-\\
+  \\
 Frankfurt University of Applied Sciences \\}
 %%% modified list of authors for the TOC (add the affiliations)
 
@@ -73,33 +73,33 @@ Frankfurt University of Applied Sciences \\}
 \subsection{Fahrzeug }
 %=============================================================================
 \begin{figure}
-\scriptsize{\caption{Fahrzeug Program}}
+  \scriptsize{\caption{Fahrzeug Program}}
 \end{figure}
 %=============================================================================
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
 void Fahrzeug::setName(const char *n)
 {
      if (name != nullptr) {
-     	delete name;
-     	name = nullptr; // handling dangling pointer to freed memory
+      delete name;
+      name = nullptr; // handling dangling pointer to freed memory
      }
 
      if (n != nullptr) { // handling empty pointer as parameter, preventing strlen from crashing
-     	name = new char[strlen(n)+1];
-     	strcpy(name, n);
+      name = new char[strlen(n)+1];
+      strcpy(name, n);
      }
 }
 
 
 
 Fahrzeug& Fahrzeug::operator=(const Fahrzeug &other) {
-	delete[] name;
+  delete[] name;
 
-	if (other.name != nullptr) { // handling empty pointer as parameter, preventing strlen from crashing
-		name = new char[strlen(other.name) + 1];
-		strcpy(name, other.name);
-	}
-	return *this;
+  if (other.name != nullptr) { // handling empty pointer as parameter, preventing strlen from crashing
+    name = new char[strlen(other.name) + 1];
+    strcpy(name, other.name);
+  }
+  return *this;
 }
 
 \end{lstlisting}
@@ -112,7 +112,7 @@ Fahrzeug& Fahrzeug::operator=(const Fahrzeug &other) {
 \subsection{EBook Headerfile}
 %=============================================================================
 \begin{figure}
-\scriptsize{\caption{Header of EBook Program}}
+  \scriptsize{\caption{Header of EBook Program}}
 \end{figure}
 %=============================================================================
 
@@ -127,24 +127,24 @@ using namespace std;
 
 class EBook {
 private:
-	string title, content; 
+  string title, content;
 public:
-	EBook();
-	EBook(string title, string content);
-	void setTitle(string title);
-	string getTitle() const;
-	void setContent(string content);
-	string getContent() const;
-	void print() const;
-	friend ostream &operator<<(ostream &output, const EBook &book);
+  EBook();
+  EBook(string title, string content);
+  void setTitle(string title);
+  string getTitle() const;
+  void setContent(string content);
+  string getContent() const;
+  void print() const;
+  friend ostream &operator<<(ostream &output, const EBook &book);
 };
 
 #endif
 
 \end{lstlisting}
 \normalsize{In the header file the declaration of the private and the public members of the EBook class takes place.\newline
-The private members are two Strings named 'title' and 'content'.
-The public members of the class EBook are the default constructor and an overloaded constructor with the parameters title and content.\newline 
+  The private members are two Strings named 'title' and 'content'.
+  The public members of the class EBook are the default constructor and an overloaded constructor with the parameters title and content.\newline
 Then we also declared the public 'getter' and 'setter' methods. Furthermore we need a print method and we must overload the \&operator$<<$ method.}\newline
 
 \newpage
@@ -152,7 +152,7 @@ Then we also declared the public 'getter' and 'setter' methods. Furthermore we n
 \subsection{Implementation of the EBook class}
 %=============================================================================
 \begin{figure}
-\scriptsize{\caption{Implementation of EBook class}}
+  \scriptsize{\caption{Implementation of EBook class}}
 \end{figure}
 %=============================================================================
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
@@ -166,40 +166,40 @@ EBook::EBook() : title(""), content("") {};
 EBook::EBook(string title, string content) : title(title), content(content) {};
 
 void EBook::setTitle(string title) {
-	if (title != "") {
-		this->title = title;
-	} else {
-		cout << "Title not set!" << endl;
-	}
+  if (title != "") {
+    this->title = title;
+  } else {
+    cout << "Title not set!" << endl;
+  }
 }
 string EBook::getTitle() const {
-	return this->title;
+  return this->title;
 }
 void EBook::setContent(string content) {
-	if (content != "") {
-		this->content = content;
-	} else {
-		cout << "Content not set!" << endl;
-	}
+  if (content != "") {
+    this->content = content;
+  } else {
+    cout << "Content not set!" << endl;
+  }
 }
 string EBook::getContent() const {
-	return this->content;
+  return this->content;
 }
 
 void EBook::print() const {
-	cout << "Title: " << this->title << '\n';
-	cout << "Content: " << this->content << '\n';
+  cout << "Title: " << this->title << '\n';
+  cout << "Content: " << this->content << '\n';
 }
 
 ostream & operator<<(ostream &output, const EBook &book) {
-	book.print();
-	return output;
+  book.print();
+  return output;
 }
 \end{lstlisting}
 \normalsize{In the Ebook.cpp file we implemented the declared methods of Ebook.h.
-First we implemented the standard constructor initializing the member variables 'title' and 'content' using an initializer list. 
-Furthermore we implemented an overloaded constructor of Bbook with the arguments 'title' and 'content' and initialized the 'title' and 'content' with the passed arguments 'title' and 'content'.
-Then we implemented the 'getter' and 'setter' methods.
+  First we implemented the standard constructor initializing the member variables 'title' and 'content' using an initializer list.
+  Furthermore we implemented an overloaded constructor of Bbook with the arguments 'title' and 'content' and initialized the 'title' and 'content' with the passed arguments 'title' and 'content'.
+  Then we implemented the 'getter' and 'setter' methods.
 Also we implemented the 'print' method. This method is for printing the 'title' and the 'content' and we overloaded the \&operater$<<$ method.}
 
 
@@ -209,8 +209,8 @@ Also we implemented the 'print' method. This method is for printing the 'title' 
 \subsection{Main class}
 %=============================================================================
 \begin{figure}
-\scriptsize{\caption{Main class of Ebook program}}
-\scriptsize{\caption{Header of Form class}}
+  \scriptsize{\caption{Main class of Ebook program}}
+  \scriptsize{\caption{Header of Form class}}
 \end{figure}
 %=============================================================================
 \begin{lstlisting}
@@ -218,10 +218,10 @@ Also we implemented the 'print' method. This method is for printing the 'title' 
 #include "eBook.h"
 
 int main() {
-	EBook book("Brown Fox", "The quick brown fox jumps over the lazy dog.");
-	std::cout << book; 
+  EBook book("Brown Fox", "The quick brown fox jumps over the lazy dog.");
+  std::cout << book;
 
-	return 0; 
+  return 0;
 }
 \end{lstlisting}
 \normalsize{The main method executes the EBook class.}
@@ -240,27 +240,25 @@ int main() {
 
 class Form {
 private:
-	double xCenter, yCenter;  
-protected:	
-	Box box; 	
+  double xCenter, yCenter;
+protected:
+  Box box;
 public:
-	Form();
-	void move(double dX, double dY);	
-	Box &getBoxRef();
+  Form();
+  void move(double dX, double dY);
+  Box &getBoxRef();
 };
 #endif
 \end{lstlisting}
-\normalsize{In the header file the declaration of the private and public members of the 'Form' class takes place. The private members a two double type variables named 'xCenter' and 'yCenter' The protected member is an object of the Box class named 'box'. The public members of the class 'Form' are the default constructor, a method named 'move' with the double type arguments 'dX' and 'dY' and a 'getBoxRef' method.\newline
-\newline
-This header file declares a class 'Form', which is the base class for classes 'Circle' and 'Rectangle'. The private members of this class are two double variables 'xCenter' and 'yCenter', which store coordinates for the center of the form.
-The protected member is a Box type object called 'box'. Because of this, every class that derives from 'Form' class has its own 'box' member and it cannot be accessed directly outside of this class. 
+\normalsize{This header file declares a class 'Form', which is the base class for classes 'Circle' and 'Rectangle'. The private members of this class are two double variables 'xCenter' and 'yCenter', which store coordinates for the center of the form.
+The protected member is a Box type object called 'box'. Because of this, every class that derives from 'Form' class has its own 'box' member and it cannot be accessed directly outside of this class.
 As public members we have a default constructor called 'Form()', a 'move' method that changes the coordinates of the form depending on the passed parameters 'dX' and 'dY', and a method called 'getBoxRef()' that returns a reference to the 'Box' type object in this class.
 
 }\newpage%=============================================================================
 \subsection{Implementation of Form class}
 %=============================================================================
 \begin{figure}
-\scriptsize{\caption{Form class Implementation}}
+  \scriptsize{\caption{Form class Implementation}}
 \end{figure}
 %=============================================================================
 
@@ -272,12 +270,12 @@ Form::Form() : xCenter(0.0), yCenter(0.0) {
 }
 
 void Form::move(double dX, double dY) {
-	this->xCenter += dX;
-	this->yCenter += dY;
+  this->xCenter += dX;
+  this->yCenter += dY;
 }
 
 Box & Form::getBoxRef() {
-	return box;
+  return box;
 }
 \end{lstlisting}
 
@@ -285,7 +283,7 @@ Box & Form::getBoxRef() {
 \subsection{Box Headerfile}
 %=============================================================================
 \begin{figure}
-\scriptsize{\caption{Header of Box class}}
+  \scriptsize{\caption{Header of Box class}}
 \end{figure}
 %=============================================================================
 
@@ -295,40 +293,36 @@ Box & Form::getBoxRef() {
 
 class Box {
 private:
-	double xMin, xMax, yMin, yMax;
+  double xMin, xMax, yMin, yMax;
 public:
-	
-	Box();
-	double getXMin() const;
-	double getXMax() const;
-	double getYMin() const;
-	double getYMax() const;
-	void setXMax(double val);
-	void setXMin(double val);
-	void setYMin(double val);
-	void setYMax(double val);
-	friend Box operator+(Box left, Box right);
-	void print() const;
+
+  Box();
+  double getXMin() const;
+  double getXMax() const;
+  double getYMin() const;
+  double getYMax() const;
+  void setXMax(double val);
+  void setXMin(double val);
+  void setYMin(double val);
+  void setYMax(double val);
+  friend Box operator+(Box left, Box right);
+  void print() const;
 };
 #endif
 \end{lstlisting}
 \normalsize{In the header file the declaration of the private and the public members of the Box class takes place.\newline
-\newline
-The private members are four double type variable named 'xMin', 'xMax', 'yMin' and 'yMax'.\newline
-One public member of the class Box is the default constructor.\newline 
-Then we also declared the public 'getter' and 'setter' methods. Furthermore also we need a 'print' method and we must overload the $+operator<<$ method.\newline
-\newline
-The 'Box' class is the representation of the bounding for each form. It is included as an object in 'Form', 'Circle' and 'Rectangle' classes.
-The private members of this class are variables 'xMin', 'xMax', 'yMin' and 'yMax'. 
-The public members are typical getter und setter conventional methods for this class, also an overloaded constructor 'Box()' that zero-initializes the private members, a 'print' method to display the bounding box values for this class, and an overloaded '+' operator declared as a friend function. It is important to declare the overloaded operator as a friend function because we want to directly access private data members. 
-Also, this overloaded operator's purpose is to create a new bounding box only if the two 'Box' type objects passed as arguments. 
-	
+  \newline
+  The 'Box' class is the representation of the bounding for each form. It is included as an object in 'Form', 'Circle' and 'Rectangle' classes.
+  The private members of this class are variables 'xMin', 'xMax', 'yMin' and 'yMax'.
+  The public members are typical getter und setter conventional methods for this class, also an overloaded constructor 'Box()' that zero-initializes the private members, a 'print' method to display the bounding box values for this class, and an overloaded '+' operator declared as a friend function. It is important to declare the overloaded operator as a friend function because we want to directly access private data members.
+  Also, this overloaded operator's purpose is to create a new bounding box only if the two 'Box' type objects passed as arguments.
+
 }\newpage
 %=============================================================================
 \subsection{Implementation of the Box class}
 %=============================================================================
 \begin{figure}
-\scriptsize{\caption{Box class Implementation}}
+  \scriptsize{\caption{Box class Implementation}}
 \end{figure}
 %=============================================================================
 \begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize]
@@ -343,23 +337,23 @@ Box::Box() : xMin(0.0), xMax(0.0), yMin(0.0), yMax(0.0) {
 }
 
 double Box::getXMin() const {
-	return xMin;
+  return xMin;
 }
 
 void Box::setXMax(double val) {
-	this->xMax = val;
+  this->xMax = val;
 }
 
 double Box::getXMax() const {
-	return xMax;
+  return xMax;
 }
 
 void Box::setXMin(double val) {
-	this->xMin = val; 
+  this->xMin = val;
 }
 
 double Box::getYMin() const {
-	return yMin;
+  return yMin;
 }
 
 void Box::setYMin(double val) {
@@ -371,11 +365,11 @@ double Box::getYMax() const {
 }
 
 void Box::setYMax(double val) {
-	this->yMax = val; 
+	this->yMax = val;
 }
 
 void Box::print() const {
-	cout << "xMax: " << xMax << endl; 
+	cout << "xMax: " << xMax << endl;
 	cout << "xMin: " << xMin << endl;
 	cout << "yMax: " << yMax << endl;
 	cout << "yMin: " << yMin << endl;
@@ -391,7 +385,7 @@ Box operator+(Box left, Box right) {
 		newRight = right;
 	}
 
-	Box result; 
+	Box result;
 
 	//check if the boxes collide
 	if (right.getXMin() < left.getXMax() && right.getYMin() < left.getYMax()) {
@@ -403,14 +397,14 @@ Box operator+(Box left, Box right) {
 	} else {
 		cout << "The boxes of these two objects don't collide." << '\n';
 	}
-	 
+
 }
 \end{lstlisting}
 
 \normalsize{In the Box class we implemented getter and setter Methods. Also we implemented the print method to show the Min and Max coordinate. Then we overload the  operator$+$ method.\newline
 \newline
 Here are all methods from the header file implemented.
-The overloaded operator '+' checks if the bounding boxes collide and if so, displays a message to the user. 
+The overloaded operator '+' checks if the bounding boxes collide and if so, displays a message to the user.
 }\newpage
 %=============================================================================
 \subsection{Circle Headerfile}
@@ -427,25 +421,25 @@ The overloaded operator '+' checks if the bounding boxes collide and if so, disp
 
 class Circle : public Form
 {
-private: 
-	double radius; 
+private:
+	double radius;
 public:
 	Circle();
 	Circle(double rad);
 	void move(double dX, double dY);
-	void setUpBox();
+	void initBox();
 private:
 	void moveBox(double dX = 0, double dY = 0);
 };
 #endif
 \end{lstlisting}
-\normalsize{In the header file of the Circle class we declare the private and public members. One of the private members is a double type variable named 'radius'. The other private member is a method named 'moveBox' with the Arguments 'dX' and 'dY'. The public members are the standard and a overloaded constructor with the parameter 'rad' which is a double type variable. The other public members are the 'move' method with the two arguments 'dX' and 'dY' and a 'setUp' method.\newline
+\normalsize{In the header file of the Circle class we declare the private and public members. One of the private members is a double type variable named 'radius'. The other private member is a method named 'moveBox' with the Arguments 'dX' and 'dY'. The public members are the standard and a overloaded constructor with the parameter 'rad' which is a double type variable. The other public members are the 'move' method with the two arguments 'dX' and 'dY' and a 'initBox' method.\newline
 \newline
 Before declaring the 'Circle' class we must first include the base class 'Form' (see the line number 4).
-This header file declares a 'Circle' class, derived from the 'Form' class. 
-In the private section we have a double variable 'radius' and a function 'moveBox'. Variable 'radius' stores the radius of the circle and the function 'moveBox' changes the position of the bounding box for this form.	
-The public methods are two overloaded constructors 'Circle()' and 'Circle(double rad)', a 'move' method that changes the position of the circle, and a method 'initBox' that initializes the bounding box. 
-	
+This header file declares a 'Circle' class, derived from the 'Form' class.
+In the private section we have a double variable 'radius' and a function 'moveBox'. Variable 'radius' stores the radius of the circle and the function 'moveBox' changes the position of the bounding box for this form.
+The public methods are two overloaded constructors 'Circle()' and 'Circle(double rad)', a 'move' method that changes the position of the circle, and a method 'initBox' that initializes the bounding box.
+
 }
 \newpage
 
@@ -471,7 +465,7 @@ Circle::Circle(double rad) : radius(rad) {
 
 }
 
-void Circle::setUpBox() {
+void Circle::initBox() {
 	this->box.setXMax(this->radius);
 	this->box.setXMin(-this->radius);
 	this->box.setYMax(this->radius);
@@ -491,11 +485,11 @@ void Circle::moveBox(double dX, double dY) {
 }
 
 \end{lstlisting}
-\normalsize{In the Circle class we implemented the default constructor and the overloaded constructor aswell. Furthermore we set all coordinates for the Box that surround the circle object in the setUpBox method. We also wrote a move method to move the circle and a moveBox method that gets called from the move method to shift the Box to the same place.\newline
+\normalsize{In the Circle class we implemented the default constructor and the overloaded constructor aswell. Furthermore we set all coordinates for the Box that surround the circle object in the initBox method. We also wrote a move method to move the circle and a moveBox method that gets called from the move method to shift the Box to the same place.\newline
 \newline
-The first overloaded constructor 'Circle()' just initializes the 'radius' variable with zero. 
-The second overloaded constructor 'Circle(double rad)' initializes the 'radius' variable with the value of the parameter 'rad'. 
-Method 'initBox' of the Circle class initializes the values of the 'box' object of the 'Circle' class. 
+The first overloaded constructor 'Circle()' just initializes the 'radius' variable with zero.
+The second overloaded constructor 'Circle(double rad)' initializes the 'radius' variable with the value of the parameter 'rad'.
+Method 'initBox' of the Circle class initializes the values of the 'box' object of the 'Circle' class.
 The overloaded method 'move' calls the 'move' function of its base class 'Form' and the private method 'moveBox' that changes the values of the bounding box. This makes the bbox follow the circle.
 }
 \newpage
@@ -514,7 +508,7 @@ The overloaded method 'move' calls the 'move' function of its base class 'Form' 
 
 class Rectangle: public Form {
 private:
-	double width, height; 
+	double width, height;
 
 public:
 	Rectangle();
@@ -523,21 +517,14 @@ public:
 	void move(double dX, double dY);
 	void initBox();
 private:
-	void moveBox(double dX = 0, double dY = 0);	
+	void moveBox(double dX = 0, double dY = 0);
 };
 #endif
 \end{lstlisting}
-\normalsize{In the header file the declaration of the private and the public members of the Form class takes place.\newline
-The private members are two double with the name 'xCenter' and 'yCenter'.
-The protected member is a Object Box with the name 'box'.
-The public members of the class Form are the default constructor.\newline 
-Also we need a move method with the arguments 'dX' and 'dY' and a method getBoxRef that returns a reference to the attribute Box.\newline
-\newline
-\newline
-Before declaring the 'Rectangle' class we must first include the base class 'Form' (see the line number 4). Then, on the line 6 we start declaring the 'Rectangle' class that derives from 'Form'.
-The private methods are two double type variables 'width' and 'height' of a rectangle. In the private section we also have a function called 'moveBox' that changes the position of the bounding box for this rectangle. Since we don't need this function outside of class, we placed this function in the private section of this class. 
-The public methods are an overloaded default constructor, a second overloaded constructor that initializes the private variables 'width' and 'height', an overloaded method called 'move' (overloads the 'move' method in the Form class), and a method 'initBox' that initializes the 'Box' type object for this class. 
-	
+\normalsize{Before declaring the 'Rectangle' class we must first include the base class 'Form' (see the line number 4). Then, on the line 6 we start declaring the 'Rectangle' class that derives from 'Form'.
+The private methods are two double type variables 'width' and 'height' of a rectangle. In the private section we also have a function called 'moveBox' that changes the position of the bounding box for this rectangle. Since we don't need this function outside of class, we placed this function in the private section of this class.
+The public methods are an overloaded default constructor, a second overloaded constructor that initializes the private variables 'width' and 'height', an overloaded method called 'move' (overloads the 'move' method in the Form class), and a method 'initBox' that initializes the 'Box' type object for this class.
+
 }\newpage
 %=============================================================================
 \subsection{Implementation of Rectangle class}
@@ -550,7 +537,7 @@ The public methods are an overloaded default constructor, a second overloaded co
 #include "Rectangle.h"
 
 Rectangle::Rectangle() : width(0.0), height(0.0) {
-	
+
 }
 
 Rectangle::Rectangle(double h, double w) : width(w), height(h) {
@@ -578,8 +565,8 @@ void Rectangle::initBox() {
 }
 \end{lstlisting}
 The first overloaded constructor 'Rectangle()' zero-initializes the width and height of the rectangle and all variables of the 'Box' type object. The second constructor 'Rectangle(double h, double w)' takes the parameters and initializes the variables 'height' and 'width'.
-The method 'initBox' takes into account that the bounding box for the rectangle is different from any other form and it initializes the variables 'xMin', 'xMax', 'yMin' and 'yMax' of the 'box' object in this class. 
-The overloaded method 'move' calls the 'move' function of the 'Form' class and changes the position of the rectangle according to the two parameters 'dX' and 'dY'. This method also calls the private 'moveBox' method to update the values of the 'box' object. This makes the bounding box follow the rectangle and it updates the bounding box automatically. 
+The method 'initBox' takes into account that the bounding box for the rectangle is different from any other form and it initializes the variables 'xMin', 'xMax', 'yMin' and 'yMax' of the 'box' object in this class.
+The overloaded method 'move' calls the 'move' function of the 'Form' class and changes the position of the rectangle according to the two parameters 'dX' and 'dY'. This method also calls the private 'moveBox' method to update the values of the 'box' object. This makes the bounding box follow the rectangle and it updates the bounding box automatically.
 \newpage
 
 %=============================================================================
@@ -595,7 +582,7 @@ The overloaded method 'move' calls the 'move' function of the 'Form' class and c
 #include "Circle.h"
 #include "Rectangle.h"
 
-using namespace std; 
+using namespace std;
 
 //checks if the user typed 'circle', returns bool
 bool inputIsCircle(string);
@@ -608,7 +595,7 @@ Circle* circleCreator(bool isTrue);
 
 //asks for needed values and calls rectangle constructor
 Rectangle* rectCreator(bool isTrue);
-Box addBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2); 
+Box addBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2);
 
 int main() {
 
@@ -617,7 +604,7 @@ int main() {
 
 	string prompt = "";
 
-	std::cout << "_______________________________________" << endl; 
+	std::cout << "_______________________________________" << endl;
 
 	Circle *circle1 = NULL;
 	Rectangle *rect1 = NULL;
@@ -694,7 +681,7 @@ int main() {
 
 	delete circle1, rect1, circle2, rect2;
 
-	return 0; 
+	return 0;
 }
 
 Box addBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2) {
@@ -719,11 +706,11 @@ Box addBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2) {
 
 bool inputIsCircle(string prompt) {
 	string circle = "circle";
-	bool result = false; 
+	bool result = false;
 	if (prompt.compare(circle) == 0) {
 		result = true;
 	} else {
-		return result; 
+		return result;
 	}
 	return result;
 }
@@ -732,7 +719,7 @@ bool inputIsRect(string prompt) {
 	string rect = "rectangle";
 	bool result = false;
 	if (prompt.compare(rect) == 0) {
-		result = true; 
+		result = true;
 	} else {
 		return result;
 	}
@@ -746,10 +733,10 @@ Circle* circleCreator(bool isTrue) {
 		cout << "Enter radius: ";
 		cin >> rad;
 		Circle *circle = new Circle(rad);
-		circle->setUpBox();
+		circle->initBox();
 		return circle;
 	} else {
-		return NULL; 
+		return NULL;
 	}
 }
 Rectangle* rectCreator(bool isTrue) {
@@ -760,28 +747,28 @@ Rectangle* rectCreator(bool isTrue) {
 		cout << "Enter width: ";
 		cin >> w;
 		Rectangle *rect = new Rectangle(h, w);
-		rect->setUpBox();
-		return rect; 
+		rect->initBox();
+		return rect;
 	} else {
 		return NULL;
 	}
 }
 \end{lstlisting}
 \normalsize{
-Now, in the main function we implement all these functions. First, we included the 'iostream' directory (line 1) and the 'string' directory from the standard library (line 2). 
-We also need the 'Circle' and 'Rectangle' class so we included it (lines 3 and 4). To make our lives more convenient we used the using-directive for the 'std' namespace (line 6). 
-On the lines 9, 12, 15, 18 and 19 we declare prototype functions that all have a different purpose. These are discussed briefly bellow.  
-On the line 21 we start with the 'main' function. First, we declare two double type variables 'movX' and 'movY' that will be initialized depending on the user input and, later, used as arguments for the 'move' function of each form. 
-The declared string 'prompt' on the line 26 is used for deciding which form to create (either a circle or a rectangle). 
+Now, in the main function we implement all these functions. First, we included the 'iostream' directory (line 1) and the 'string' directory from the standard library (line 2).
+We also need the 'Circle' and 'Rectangle' class so we included it (lines 3 and 4). To make our lives more convenient we used the using-directive for the 'std' namespace (line 6).
+On the lines 9, 12, 15, 18 and 19 we declare prototype functions that all have a different purpose. These are discussed briefly bellow.
+On the line 21 we start with the 'main' function. First, we declare two double type variables 'movX' and 'movY' that will be initialized depending on the user input and, later, used as arguments for the 'move' function of each form.
+The declared string 'prompt' on the line 26 is used for deciding which form to create (either a circle or a rectangle).
 Lines 30 and 31 declare and initialize with NULL a circle and a rectangle object.
-Depending on the user input (either 'circle' or 'rectangle') only one form of these two types will be initialized (i.e. 'circle1/2' or 'rect1/2') 
+Depending on the user input (either 'circle' or 'rectangle') only one form of these two types will be initialized (i.e. 'circle1/2' or 'rect1/2')
 The creation is implemented in the 'circleCreator' and 'rectCreator' functions. The values of the bounding box are also displayed through the use of the 'print' method of the 'Box' class.
-The user will be also asked to move the form in the X and Y direction. The input is stored in the 'movX' and 'movY' variables respectively and then passed to the 'move' function. 
+The user will be also asked to move the form in the X and Y direction. The input is stored in the 'movX' and 'movY' variables respectively and then passed to the 'move' function.
 After calling the 'move' function, the 'print' method of the 'Box' class is used again to display the variables of the bounding box for this form.
-The whole process repeats for the second form. 
+The whole process repeats for the second form.
 Then, on the line 93, we declare a new 'Box' type object called 'boundingBox'. This object is used to add the bboxes of the created forms. This is achieved through the use of 'addBoxes' function, a function that finds suitable values for the new, larger bounding box. Keep in mind that if the bounding boxes of the two created forms don't collide, then we don't need to find a new bounding box since they should stay separated from each other.
 On the line 103 we deallocate the memory used by 'Circle' and 'Rectangle' objects.
-\newline 
+\newline
 }
 
 
