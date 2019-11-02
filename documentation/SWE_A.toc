@@ -5,11 +5,12 @@
 \contentsline {subsection}{\numberline {2.2}Implementation of the EBook class}{5}% 
 \contentsline {subsection}{\numberline {2.3}Main class}{6}% 
 \contentsline {section}{\numberline {3}Exercise 4}{6}% 
-\contentsline {subsection}{\numberline {3.1}Box Headerfile}{6}% 
-\contentsline {subsection}{\numberline {3.2}Circle Headerfile}{8}% 
-\contentsline {subsection}{\numberline {3.3}Form Headerfile}{8}% 
-\contentsline {subsection}{\numberline {3.4}Rectangle Headerfile}{10}% 
-\contentsline {subsection}{\numberline {3.5}Implementation of the Box class}{11}% 
-\contentsline {subsection}{\numberline {3.6}Circle Class}{13}% 
-\contentsline {subsection}{\numberline {3.7}Implementation of the Rectangle Class}{14}% 
-\contentsline {subsection}{\numberline {3.8}Implementation of the Main Class}{15}% 
+\contentsline {subsection}{\numberline {3.1}Form Headerfile}{6}% 
+\contentsline {subsection}{\numberline {3.2}Implementation of Form class}{8}% 
+\contentsline {subsection}{\numberline {3.3}Box Headerfile}{8}% 
+\contentsline {subsection}{\numberline {3.4}Implementation of the Box class}{10}% 
+\contentsline {subsection}{\numberline {3.5}Circle Headerfile}{12}% 
+\contentsline {subsection}{\numberline {3.6}Implementation of Circle class}{13}% 
+\contentsline {subsection}{\numberline {3.7}Rectangle Headerfile}{14}% 
+\contentsline {subsection}{\numberline {3.8}Implementation of Rectangle class}{15}% 
+\contentsline {subsection}{\numberline {3.9}Implementation of the Main Class}{16}% 
