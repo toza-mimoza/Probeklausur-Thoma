@@ -1,3 +1,0 @@
-\babel@toc {german}{}
-\contentsline {section}{\numberline {1}Ideas}{1}% 
-\contentsline {section}{\numberline {2}Decision}{1}% 
