@@ -1,122 +1,87 @@
-% This is LLNCS.DEM the demonstration file of
-% the LaTeX macro package from Springer-Verlag
-% for Lecture Notes in Computer Science,
-% version 2.2 for LaTeX2e
-%
-\documentclass{article}
+% Document class, paper size, base font size
+\documentclass[a4paper, 10pt]{article}
 
-%
-%\usepackage{makeidx}  % allows for indexgeneration
-%
+% Farben
+\usepackage[dvipsnames]{xcolor}
 
-\usepackage{epsfig}
-%\usepackage{multirow}
+% Farben für Code Listings Style
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.1,0.1,0.1}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.95}
 
-\usepackage{amssymb}
-\usepackage{amsmath}
+% code listings
 \usepackage{listings}
 
-\usepackage{color}
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-
-\lstset{frame=tb,
-  language=Java,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3
+% Style für Code Listings
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\bfseries\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    belowskip=-2mm,
+    aboveskip=-3mm
 }
+
+\lstset{style=mystyle}
+
+% Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% Title, authors and date
+\title{Exercise 1: Probeklausur Objektorientierte Programmierung Grundlagen}
+\author{
+    Kendra Birringer (1229372)\\
+    Nader Cacace (1208115)\\
+    Steffen Hanzlik (1207417)\\
+    Marco Peluso (1228849)\\
+    Svetozar Stojanovic (1262287)\\
+    \\
+    Frankfurt University of Applied Sciences
+}
+\date{November 1st, 2019}
+
+% Prevent indentation of beginning of paragraphs
+\setlength{\parindent}{0em}
+
+% Space between paragraphs
+\parskip 0.5em
+
+% include PDFs
+\usepackage{pdfpages}
+
+% captions
+\usepackage[font={small, it}]{caption}
+\captionsetup{justification=raggedright, singlelinecheck=false}
+
+% keep figures in place
+\usepackage{float}
 
 \begin{document}
+\maketitle
 
-%\makeatletter
-%\renewcommand%\subsubsection{\@startsection{subsubsection}%{2}{\z@}%
-%                       {-18\p@ \@plus %-4\p@ \@minus -4\p@}%
-%                       {\lineskip}%
-%                       {\normalfont%\normalsize\bfseries%
-%                      \boldmath%
-%                      \classtableofcontents}}
-%\makeatother
-
-
-\title{Software Engineering Analysis Scientific Report}
-
-% abbreviated author list (for running head)
-\author{Kendra Birringer (1229372) \\ Nader Cacace (1208115) \\ Steffen Hanzlik (1207417) \\ Marco Peluso (1228849) \\ Svetozar Stojanovic (1262287)\\
-  \\
-Frankfurt University of Applied Sciences \\}
-%%% modified list of authors for the TOC (add the affiliations)
-
-%\institute{
-%Frankfurt University of Applied Sciences \\
-%}
-
-\maketitle              % typeset the title of the contribution
+\newpage
 \tableofcontents
 \listoffigures
-\newpage
-%=============================================================================
-\section{Exercise 2}
-%=============================================================================
-%=============================================================================
-\subsection{Fahrzeug }
-%=============================================================================
-\begin{figure}
-  \scriptsize{\caption{Fahrzeug Program}}
-\end{figure}
-%=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
-void Fahrzeug::setName(const char *n)
-{
-     if (name != nullptr) {
-      delete name;
-      name = nullptr; // handling dangling pointer to freed memory
-     }
-
-     if (n != nullptr) { // handling empty pointer as parameter, preventing strlen from crashing
-      name = new char[strlen(n)+1];
-      strcpy(name, n);
-     }
-}
-
-
-
-Fahrzeug& Fahrzeug::operator=(const Fahrzeug &other) {
-  delete[] name;
-
-  if (other.name != nullptr) { // handling empty pointer as parameter, preventing strlen from crashing
-    name = new char[strlen(other.name) + 1];
-    strcpy(name, other.name);
-  }
-  return *this;
-}
-
-\end{lstlisting}
 
 \newpage
-%=============================================================================
 \section{Exercise 3}
-%=============================================================================
-%=============================================================================
 \subsection{EBook Headerfile}
-%=============================================================================
-\begin{figure}
-  \scriptsize{\caption{Header of EBook Program}}
-\end{figure}
-%=============================================================================
-
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
+\begin{figure}[ht]
+\begin{lstlisting}[language=c++]
 #ifndef _EBOOK_H_
 #define _EBOOK_H_
 
@@ -140,22 +105,20 @@ public:
 };
 
 #endif
-
 \end{lstlisting}
-\normalsize{In the header file the declaration of the private and the public members of the EBook class takes place.\newline
-  The private members are two Strings named 'title' and 'content'.
-  The public members of the class EBook are the default constructor and an overloaded constructor with the parameters title and content.\newline
-Then we also declared the public 'getter' and 'setter' methods. Furthermore we need a print method and we must overload the \&operator$<<$ method.}\newline
+\caption{Header of EBook Program}
+\end{figure}
+In the header file the declaration of the private and the public members of the EBook class takes place.
+
+The private members are two Strings named 'title' and 'content'.
+The public members of the class EBook are the default constructor and an overloaded constructor with the parameters title and content.
+
+Then we also declared the public 'getter' and 'setter' methods. Furthermore we need a print method and we must overload the \&operator$<<$ method.
 
 \newpage
-%=============================================================================
 \subsection{Implementation of the EBook class}
-%=============================================================================
-\begin{figure}
-  \scriptsize{\caption{Implementation of EBook class}}
-\end{figure}
-%=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
+\begin{figure}[H]
+\begin{lstlisting}[language=c++]
 #include "eBook.h"
 #include <iostream>
 
@@ -194,26 +157,20 @@ void EBook::print() const {
 ostream & operator<<(ostream &output, const EBook &book) {
   book.print();
   return output;
-}
 \end{lstlisting}
-\normalsize{In the Ebook.cpp file we implemented the declared methods of Ebook.h.
-  First we implemented the standard constructor initializing the member variables 'title' and 'content' using an initializer list.
-  Furthermore we implemented an overloaded constructor of Bbook with the arguments 'title' and 'content' and initialized the 'title' and 'content' with the passed arguments 'title' and 'content'.
-  Then we implemented the 'getter' and 'setter' methods.
-Also we implemented the 'print' method. This method is for printing the 'title' and the 'content' and we overloaded the \&operater$<<$ method.}
-
-
-
-
-%=============================================================================
-\subsection{Main class}
-%=============================================================================
-\begin{figure}
-  \scriptsize{\caption{Main class of Ebook program}}
-  \scriptsize{\caption{Header of Form class}}
+\caption{Implementation of EBook class}
 \end{figure}
-%=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
+In the Ebook.cpp file we implemented the declared methods of Ebook.h.
+First we implemented the standard constructor initializing the member variables 'title' and 'content' using an initializer list.
+
+Furthermore we implemented an overloaded constructor of Bbook with the arguments 'title' and 'content' and initialized the 'title' and 'content' with the passed arguments 'title' and 'content'.
+
+Then we implemented the 'getter' and 'setter' methods.
+Also we implemented the 'print' method. This method is for printing the 'title' and the 'content' and we overloaded the \&operater$<<$ method.
+
+\subsection{Main class}
+\begin{figure}[H]
+\begin{lstlisting}[language=c++]
 #include <iostream>
 #include "eBook.h"
 
@@ -224,15 +181,15 @@ int main() {
   return 0;
 }
 \end{lstlisting}
-\normalsize{The main method executes the EBook class.}
-%=============================================================================
-\section{Exercise 4}
-%=============================================================================
+\caption{Main class of Ebook program}
+\end{figure}
+The main method executes the EBook class.
 
-%=============================================================================
+\newpage
+\section{Exercise 4}
 \subsection{Form Headerfile}
-%=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
+\begin{figure}[H]
+\begin{lstlisting}[language=c++]
 #ifndef _FORM_H_
 #define _FORM_H_
 
@@ -250,19 +207,16 @@ public:
 };
 #endif
 \end{lstlisting}
-\normalsize{This header file declares a class 'Form', which is the base class for classes 'Circle' and 'Rectangle'. The private members of this class are two double variables 'xCenter' and 'yCenter', which store coordinates for the center of the form.
+\caption{Header of Form class}
+\end{figure}
+This header file declares a class 'Form', which is the base class for classes 'Circle' and 'Rectangle'. The private members of this class are two double variables 'xCenter' and 'yCenter', which store coordinates for the center of the form.
 The protected member is a Box type object called 'box'. Because of this, every class that derives from 'Form' class has its own 'box' member and it cannot be accessed directly outside of this class.
+
 As public members we have a default constructor called 'Form()', a 'move' method that changes the coordinates of the form depending on the passed parameters 'dX' and 'dY', and a method called 'getBoxRef()' that returns a reference to the 'Box' type object in this class.
 
-}\newpage%=============================================================================
 \subsection{Implementation of Form class}
-%=============================================================================
-\begin{figure}
-  \scriptsize{\caption{Form class Implementation}}
-\end{figure}
-%=============================================================================
-
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
+\begin{figure}[H]
+\begin{lstlisting}[language=c++]
 #include "Form.h"
 
 Form::Form() : xCenter(0.0), yCenter(0.0) {
@@ -278,16 +232,13 @@ Box & Form::getBoxRef() {
   return box;
 }
 \end{lstlisting}
-
-%=============================================================================
-\subsection{Box Headerfile}
-%=============================================================================
-\begin{figure}
-  \scriptsize{\caption{Header of Box class}}
+\caption{Form class Implementation}
 \end{figure}
-%=============================================================================
+Here we implemented the methods which we declared in the related header file.
 
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
+\subsection{Box Headerfile}
+\begin{figure}[H]
+\begin{lstlisting}[language=c++]
 #ifndef _BOX_H_
 #define _BOX_H_
 
@@ -310,22 +261,21 @@ public:
 };
 #endif
 \end{lstlisting}
-\normalsize{In the header file the declaration of the private and the public members of the Box class takes place.\newline
-  \newline
-  The 'Box' class is the representation of the bounding for each form. It is included as an object in 'Form', 'Circle' and 'Rectangle' classes.
-  The private members of this class are variables 'xMin', 'xMax', 'yMin' and 'yMax'.
-  The public members are typical getter und setter conventional methods for this class, also an overloaded constructor 'Box()' that zero-initializes the private members, a 'print' method to display the bounding box values for this class, and an overloaded '+' operator declared as a friend function. It is important to declare the overloaded operator as a friend function because we want to directly access private data members.
-  Also, this overloaded operator's purpose is to create a new bounding box only if the two 'Box' type objects passed as arguments.
-
-}\newpage
-%=============================================================================
-\subsection{Implementation of the Box class}
-%=============================================================================
-\begin{figure}
-  \scriptsize{\caption{Box class Implementation}}
+\caption{Header of Box class}
 \end{figure}
-%=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
+In the header file the declaration of the private and the public members of the Box class takes place.
+
+The 'Box' class is the representation of the bounding for each form. It is included as an object in 'Form', 'Circle' and 'Rectangle' classes.
+
+The private members of this class are variables 'xMin', 'xMax', 'yMin' and 'yMax'.
+
+The public members are typical getter und setter conventional methods for this class, also an overloaded constructor 'Box()' that zero-initializes the private members, a 'print' method to display the bounding box values for this class, and an overloaded '+' operator declared as a friend function. It is important to declare the overloaded operator as a friend function because we want to directly access private data members.
+
+Also, this overloaded operator's purpose is to create a new bounding box only if the two 'Box' type objects passed as arguments.
+
+\subsection{Implementation of the Box class}
+\begin{figure}[H]
+\begin{lstlisting}[language=c++]
 #include "Box.h"
 #include <iostream>
 #include <algorithm>
@@ -374,7 +324,12 @@ void Box::print() const {
 	cout << "yMax: " << yMax << endl;
 	cout << "yMin: " << yMin << endl;
 }
+\end{lstlisting}
+\caption{Box class Implementation – Part 1}
+\end{figure}
 
+\begin{figure}[H]
+\begin{lstlisting}[language=c++]
 Box operator+(Box left, Box right) {
 	Box newLeft, newRight;
 	if (left.getXMax() > right.getXMax()) {
@@ -397,23 +352,19 @@ Box operator+(Box left, Box right) {
 	} else {
 		cout << "The boxes of these two objects don't collide." << '\n';
 	}
-
 }
 \end{lstlisting}
-
-\normalsize{In the Box class we implemented getter and setter Methods. Also we implemented the print method to show the Min and Max coordinate. Then we overload the  operator$+$ method.\newline
-\newline
-Here are all methods from the header file implemented.
-The overloaded operator '+' checks if the bounding boxes collide and if so, displays a message to the user.
-}\newpage
-%=============================================================================
-\subsection{Circle Headerfile}
-%=============================================================================
-\begin{figure}
-\scriptsize{\caption{Header of Circle class}}
+\caption{Box class Implementation - Part 2}
 \end{figure}
-%=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
+In the Box class we implemented getter and setter Methods. Also we implemented the print method to show the Min and Max coordinate. Then we overload the  operator$+$ method.
+
+Here are all methods from the header file implemented.
+
+The overloaded operator '+' checks if the bounding boxes collide and if so, displays a message to the user.
+
+\subsection{Circle Headerfile}
+\begin{figure}[H]
+\begin{lstlisting}[language=c++]
 #ifndef _CIRCLE_H_
 #define _CIRCLE_H_
 
@@ -433,24 +384,19 @@ private:
 };
 #endif
 \end{lstlisting}
-\normalsize{In the header file of the Circle class we declare the private and public members. One of the private members is a double type variable named 'radius'. The other private member is a method named 'moveBox' with the Arguments 'dX' and 'dY'. The public members are the standard and a overloaded constructor with the parameter 'rad' which is a double type variable. The other public members are the 'move' method with the two arguments 'dX' and 'dY' and a 'initBox' method.\newline
-\newline
+\caption{Header of Circle class}
+\end{figure}
+In the header file of the Circle class we declare the private and public members. One of the private members is a double type variable named 'radius'. The other private member is a method named 'moveBox' with the Arguments 'dX' and 'dY'. The public members are the standard and a overloaded constructor with the parameter 'rad' which is a double type variable. The other public members are the 'move' method with the two arguments 'dX' and 'dY' and a 'initBox' method.
+
 Before declaring the 'Circle' class we must first include the base class 'Form' (see the line number 4).
+
 This header file declares a 'Circle' class, derived from the 'Form' class.
 In the private section we have a double variable 'radius' and a function 'moveBox'. Variable 'radius' stores the radius of the circle and the function 'moveBox' changes the position of the bounding box for this form.
+
 The public methods are two overloaded constructors 'Circle()' and 'Circle(double rad)', a 'move' method that changes the position of the circle, and a method 'initBox' that initializes the bounding box.
 
-}
-\newpage
-
-%=============================================================================
-\subsection{Implementation of Circle class}
-%=============================================================================
-\begin{figure}
-\scriptsize{\caption{Circle class Implementation}}
-\end{figure}
-%=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
+\subsection{Implementation of Circle class}\begin{figure}[H]
+\begin{lstlisting}[language=c++]
 #include "Circle.h"
 
 Circle::Circle() : radius(0.0) {
@@ -485,22 +431,20 @@ void Circle::moveBox(double dX, double dY) {
 }
 
 \end{lstlisting}
-\normalsize{In the Circle class we implemented the default constructor and the overloaded constructor aswell. Furthermore we set all coordinates for the Box that surround the circle object in the initBox method. We also wrote a move method to move the circle and a moveBox method that gets called from the move method to shift the Box to the same place.\newline
-\newline
+\caption{Circle class Implementation}
+\end{figure}
+In the Circle class we implemented the default constructor and the overloaded constructor aswell. Furthermore we set all coordinates for the Box that surround the circle object in the initBox method. We also wrote a move method to move the circle and a moveBox method that gets called from the move method to shift the Box to the same place.
+
 The first overloaded constructor 'Circle()' just initializes the 'radius' variable with zero.
 The second overloaded constructor 'Circle(double rad)' initializes the 'radius' variable with the value of the parameter 'rad'.
+
 Method 'initBox' of the Circle class initializes the values of the 'box' object of the 'Circle' class.
+
 The overloaded method 'move' calls the 'move' function of its base class 'Form' and the private method 'moveBox' that changes the values of the bounding box. This makes the bbox follow the circle.
-}
-\newpage
-%=============================================================================
+
 \subsection{Rectangle Headerfile}
-%=============================================================================
-\begin{figure}
-\scriptsize{\caption{Header of Rectangle class}}
-\end{figure}
-%=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
+\begin{figure}[H]
+\begin{lstlisting}[language=c++]
 #ifndef _RECTANGLE_H_
 #define _RECTANGLE_H_
 
@@ -521,19 +465,17 @@ private:
 };
 #endif
 \end{lstlisting}
-\normalsize{Before declaring the 'Rectangle' class we must first include the base class 'Form' (see the line number 4). Then, on the line 6 we start declaring the 'Rectangle' class that derives from 'Form'.
+\caption{Header of Rectangle class}
+\end{figure}
+Before declaring the 'Rectangle' class we must first include the base class 'Form' (see the line number 4). Then, on the line 6 we start declaring the 'Rectangle' class that derives from 'Form'.
+
 The private methods are two double type variables 'width' and 'height' of a rectangle. In the private section we also have a function called 'moveBox' that changes the position of the bounding box for this rectangle. Since we don't need this function outside of class, we placed this function in the private section of this class.
+
 The public methods are an overloaded default constructor, a second overloaded constructor that initializes the private variables 'width' and 'height', an overloaded method called 'move' (overloads the 'move' method in the Form class), and a method 'initBox' that initializes the 'Box' type object for this class.
 
-}\newpage
-%=============================================================================
 \subsection{Implementation of Rectangle class}
-%=============================================================================
-\begin{figure}
-\scriptsize{\caption{Rectangle class Implementation}}
-\end{figure}
-%=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
+\begin{figure}[H]
+\begin{lstlisting}[language=c++]
 #include "Rectangle.h"
 
 Rectangle::Rectangle() : width(0.0), height(0.0) {
@@ -564,19 +506,17 @@ void Rectangle::initBox() {
 	this->box.setYMin(-height / 2);
 }
 \end{lstlisting}
-The first overloaded constructor 'Rectangle()' zero-initializes the width and height of the rectangle and all variables of the 'Box' type object. The second constructor 'Rectangle(double h, double w)' takes the parameters and initializes the variables 'height' and 'width'.
-The method 'initBox' takes into account that the bounding box for the rectangle is different from any other form and it initializes the variables 'xMin', 'xMax', 'yMin' and 'yMax' of the 'box' object in this class.
-The overloaded method 'move' calls the 'move' function of the 'Form' class and changes the position of the rectangle according to the two parameters 'dX' and 'dY'. This method also calls the private 'moveBox' method to update the values of the 'box' object. This makes the bounding box follow the rectangle and it updates the bounding box automatically.
-\newpage
-
-%=============================================================================
-\subsection{Implementation of the Main Class}
-%=============================================================================
-\begin{figure}
-\scriptsize{\caption{Main class Implementation}}
+\caption{Rectangle class Implementation}
 \end{figure}
-%=============================================================================
-\begin{lstlisting}[basicstyle=\footnotesize\ttfamily, numbers=left, stepnumber=1, numberstyle = \normalsize, caption={My Caption}]
+The first overloaded constructor 'Rectangle()' zero-initializes the width and height of the rectangle and all variables of the 'Box' type object. The second constructor 'Rectangle(double h, double w)' takes the parameters and initializes the variables 'height' and 'width'.
+
+The method 'initBox' takes into account that the bounding box for the rectangle is different from any other form and it initializes the variables 'xMin', 'xMax', 'yMin' and 'yMax' of the 'box' object in this class.
+
+The overloaded method 'move' calls the 'move' function of the 'Form' class and changes the position of the rectangle according to the two parameters 'dX' and 'dY'. This method also calls the private 'moveBox' method to update the values of the 'box' object. This makes the bounding box follow the rectangle and it updates the bounding box automatically.
+
+\subsection{Implementation of the Main Class}
+\begin{figure}[H]
+\begin{lstlisting}[language=c++]
 #include <iostream>
 #include <string>
 #include "Circle.h"
@@ -642,6 +582,12 @@ int main() {
 	Rectangle *rect2 = NULL;
 	cout << "Enter second form (rectangle or circle): ";
 	cin >> prompt;
+\end{lstlisting}
+\caption{Main class Implementation – Part 1}
+\end{figure}
+
+\begin{figure}[H]
+\begin{lstlisting}[language=c++]
 	if (inputIsCircle(prompt)) {
 		circle2 = circleCreator(inputIsCircle(prompt));
 		circle2->getBoxRef().print();
@@ -700,10 +646,14 @@ Box addBoxes(Circle* c1, Circle* c2, Rectangle* r1, Rectangle* r2) {
 		result = c1->getBoxRef() + c2->getBoxRef();
 		return result;
 	}
-
 	return result;
 }
+\end{lstlisting}
+\caption{Main class Implementation – Part 2}
+\end{figure}
 
+\begin{figure}[H]
+\begin{lstlisting}[language=c++]
 bool inputIsCircle(string prompt) {
 	string circle = "circle";
 	bool result = false;
@@ -723,7 +673,6 @@ bool inputIsRect(string prompt) {
 	} else {
 		return result;
 	}
-
 	return result;
 }
 Circle* circleCreator(bool isTrue) {
@@ -754,68 +703,33 @@ Rectangle* rectCreator(bool isTrue) {
 	}
 }
 \end{lstlisting}
-\normalsize{
+\caption{Main class Implementation – Part 3}
+\end{figure}
 Now, in the main function we implement all these functions. First, we included the 'iostream' directory (line 1) and the 'string' directory from the standard library (line 2).
+
 We also need the 'Circle' and 'Rectangle' class so we included it (lines 3 and 4). To make our lives more convenient we used the using-directive for the 'std' namespace (line 6).
+
 On the lines 9, 12, 15, 18 and 19 we declare prototype functions that all have a different purpose. These are discussed briefly bellow.
+
 On the line 21 we start with the 'main' function. First, we declare two double type variables 'movX' and 'movY' that will be initialized depending on the user input and, later, used as arguments for the 'move' function of each form.
+
 The declared string 'prompt' on the line 26 is used for deciding which form to create (either a circle or a rectangle).
+
 Lines 30 and 31 declare and initialize with NULL a circle and a rectangle object.
-Depending on the user input (either 'circle' or 'rectangle') only one form of these two types will be initialized (i.e. 'circle1/2' or 'rect1/2')
-The creation is implemented in the 'circleCreator' and 'rectCreator' functions. The values of the bounding box are also displayed through the use of the 'print' method of the 'Box' class.
+
+Depending on the user input (either 'circle' or 'rectangle') only one form of these two types will be initialized (i.e. 'circle1/2' or 'rect1/2'). The creation is implemented in the 'circleCreator' and 'rectCreator' functions. The values of the bounding box are also displayed through the use of the 'print' method of the 'Box' class.
+
 The user will be also asked to move the form in the X and Y direction. The input is stored in the 'movX' and 'movY' variables respectively and then passed to the 'move' function.
 After calling the 'move' function, the 'print' method of the 'Box' class is used again to display the variables of the bounding box for this form.
+
 The whole process repeats for the second form.
+
 Then, on the line 93, we declare a new 'Box' type object called 'boundingBox'. This object is used to add the bboxes of the created forms. This is achieved through the use of 'addBoxes' function, a function that finds suitable values for the new, larger bounding box. Keep in mind that if the bounding boxes of the two created forms don't collide, then we don't need to find a new bounding box since they should stay separated from each other.
 On the line 103 we deallocate the memory used by 'Circle' and 'Rectangle' objects.
-\newline
-}
 
-
-%=============================================================================
-%\section{Foundations}
-%=============================================================================
-
-
-
-%-----------------------------------------------------------------------------
-%\subsection{}
-%-----------------------------------------------------------------------------
-
-
-
-%-----------------------------------------------------------------------------
-%\subsection{}
-%-----------------------------------------------------------------------------
-
-%-----------------------------------------------------------------------------
-%\subsection{}
-%-----------------------------------------------------------------------------
-
-
-%=============================================================================
-%\section{}
-%=============================================================================
-
-
-
-%-----------------------------------------------------------------------------
-%\subsection{}
-%-----------------------------------------------------------------------------
-
-
-%=============================================================================
-%\section{}
-%=============================================================================
-
-
-
-%=============================================================================
-%\section{Conclusion}
-%=============================================================================
+\newpage
+\section{Learning Material}
+\includepdf[pages=-]{exam-solution-complete.pdf}
 
 
 \end{document}
-
-\newpage
-
