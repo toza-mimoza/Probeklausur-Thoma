@@ -1,5 +1,6 @@
 % Document class, paper size, base font size
 \documentclass[a4paper, 12pt]{article}
+\usepackage[left=2.5cm, right=2cm, top=2cm, bottom=2cm]{geometry}
 
 % Encoding
 \usepackage[utf8]{inputenc}
@@ -13,6 +14,13 @@
 
 % include PDFs
 \usepackage{pdfpages}
+
+% captions
+\usepackage[font={small, it}]{caption}
+\captionsetup{justification=raggedright, singlelinecheck=false}
+
+% keep figures in place
+\usepackage{float}
 
 % Title, authors and date
 \title{Exercise 5: UML}
@@ -34,35 +42,53 @@
 \maketitle
 \newpage
 \tableofcontents
+\listoffigures
 
 \newpage
 \section{Redesign Diagram Figure 18.1 (from UML Standard 2.5.1 Specification\cite{uml251specpdf})}
+\begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.4, angle=90, origin=c]{01-abstract-syntax.png}
 \end{center}
+\caption{Abstract Syntax Diagram Redesign}
+\end{figure}
 
 \section{Use Case: Customer registration and Administration}
+\begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.5]{02-e-bike-rental-service-variant-1-01.png}
 \end{center}
+\caption{Abstract Syntax Diagram Redesign}
+\end{figure}
 
 \section{Use Case: Payment by an External Bank}
+\begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.5]{02-e-bike-rental-service-variant-1-02.png}
 \end{center}
+\caption{Use Case Diagram (Registration)}
+\end{figure}
 
 \section{Use Case: Check-in/-out for Bicycle Rent}
+\begin{figure}[H]
 \begin{center}
 \includegraphics[scale=0.5]{02-e-bike-rental-service-variant-1-03.png}
 \end{center}
+\caption{Use Case Diagram (Check-in/out for Bicycle Rent)}
+\end{figure}
 
+\newpage
 \section{Use Cases (Variant 2: Combined)}
+\begin{figure}[!ht]
 \begin{center}
 \includegraphics[scale=0.5]{02-e-bike-rental-service-variant-2.png}
 \end{center}
+\caption{Use Case Diagram Variant 2 (E-Bike Rental Service App)}
+\end{figure}
 
 \newpage
 \section{Division of Work}
+\begin{figure}[!ht]
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -71,6 +97,8 @@ Kendra Birringer    & Nader Cacace  & Steffen Hanzlik   & Marco Peluso  & Svetoz
 20\%                & 20\%          & 20\%              & 20\%          & 20\%\\
 \hline
 \end{tabular}
+\caption{"Who did what?"}
+\end{figure}
 \newpage
 
 \begin{thebibliography}{2}
