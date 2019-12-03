@@ -1,0 +1,51 @@
+\documentclass{article}
+
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+
+\newenvironment{myreq}[1]{%
+\setlist[description]{font=\normalfont\color{darkgray}}%
+\begin{tcolorbox}[colframe=black,colback=white, sharp corners, boxrule=1pt]%
+\bfseries\color{blue}%
+\begin{description}#1}%
+{\end{description}\end{tcolorbox}}
+
+\newcommand{\threeinline}[3]{\begin{multicols}{3}#1 #2 #3\end{multicols}}
+\newcommand{\twoinline}[2]{\begin{multicols}{2}#1 #2\end{multicols}}
+
+\newcommand{\reqno}{\item[Requirement \#:]}
+\newcommand{\reqtype}{\item[Requirement Type:]}
+\newcommand{\reqevent}{\item[Event/BUC/PUC \#:]}
+\newcommand{\reqdesc}{\item[Description:]}
+\newcommand{\reqrat}{\item[Rationale:]}
+\newcommand{\reqorig}{\item[Originator:]}
+\newcommand{\reqfit}{\item[Fit Criterion:]}
+\newcommand{\reqsatis}{\item[Customer Satisfaction:]}
+\newcommand{\reqdissat}{\item[Customer Dissatisfaction:]}
+\newcommand{\reqdep}{\item[Dependencies:]}
+\newcommand{\reqconf}{\item[Conflicts:]}
+\newcommand{\reqmater}{\item[Materials:]}
+\newcommand{\reqhist}{\item[History:]}
+
+\begin{document}
+\begin{myreq}
+  \threeinline
+    {\reqno 75}
+    {\reqtype 9}
+    {\reqevent 7.9}
+  \reqdesc description text description text description text 
+  \reqrat some more text some more text some more text 
+  \reqorig other text other text other text 
+  \reqfit longer text that needs more than one line longer text that needs more than one line
+  \twoinline
+    {\reqsatis 5}
+    {\reqdissat 3}
+  \twoinline
+  {\reqdep some more text}
+  {\reqconf 111}
+  \reqmater other text other text other text 
+  \reqhist other text other text other text 
+\end{myreq}
+\end{document}
