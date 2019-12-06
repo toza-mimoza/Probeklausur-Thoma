@@ -1,0 +1,224 @@
+\documentclass{article}
+
+\usepackage{multicol}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{enumitem}
+\usepackage{tcolorbox}
+%TEST
+\usepackage{microtype}
+%\usepackage{babel}
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{luainputenc}
+\usepackage[textwidth=17cm]{geometry} % versuche unschöne Zeilenumbrüche zu verhindern
+
+%TEST END
+
+\newenvironment{myreq}[1]{%
+\setlist[description]{font=\normalfont\color{darkgray}}%
+\begin{tcolorbox}[colframe=black,colback=white, sharp corners, boxrule=1pt]%
+\bfseries\color{blue}%
+\begin{description}#1}%
+{\end{description}\end{tcolorbox}}
+
+\newcommand{\threeinline}[3]{\begin{multicols}{3}#1#2#3\end{multicols}}
+\newcommand{\twoinline}[2]{\begin{multicols}{2}#1#2\end{multicols}}
+
+\newcommand{\reqno}{\item[Requirement \#:]}
+\newcommand{\reqtype}{\item[Requirement Type:]}
+\newcommand{\reqevent}{\item[Event/BUC/PUC \#:]}
+\newcommand{\reqdesc}{\item[Description:]}
+\newcommand{\reqrat}{\item[Rationale:]}
+\newcommand{\reqorig}{\item[Originator:]}
+\newcommand{\reqfit}{\item[Fit Criterion:]}
+\newcommand{\reqsatis}{\item[Customer Satisfaction:]}
+\newcommand{\reqdissat}{\item[Customer Dissatisfaction:]}
+\newcommand{\reqdep}{\item[Dependencies:]}
+\newcommand{\reqconf}{\item[Conflicts:]}
+\newcommand{\reqmater}{\item[Materials:]}
+\newcommand{\reqhist}{\item[History:]}
+
+\begin{document}
+
+%Snow Card 1 Check-out
+\begin{myreq}
+  \threeinline
+    {\reqno 1}
+    {\reqtype Functional}
+    {\reqevent Checkout}
+  \reqdesc Checkout reperesent the state the user can clip off the bike from the bikestation to ride on it
+  \reqrat Customer should be able to rent a bike
+  \reqorig Steffen Hanzlik, Marco Peluso, Kendra Birringer
+  \reqfit Fits if the bicycle is checked in and the customer can ride the bike
+  \twoinline
+    {\reqsatis 5}
+    {\reqdissat 5}
+  \twoinline
+  {\reqdep Valid payment, bike can be unlocked}
+  {\reqconf None}
+  \reqmater None
+  \reqhist Raised by S.H., M.P., K.B., 05.12.2019
+\end{myreq}
+
+
+%Snow Card 2 Check-in
+\begin{myreq}
+  \threeinline
+    {\reqno 2}
+    {\reqtype Functional}
+    {\reqevent Checkin}
+  \reqdesc Check in represents the state the user can clip on the bike to bring it back and finish the usage
+
+  \reqrat Customer should be able to finish the bike usage and to pay for his usage of the bike
+  \reqorig Steffen Hanzlik, Marco Peluso, Kendra Birringer, Nader Cacace, Svetozar Stojanovic
+  \reqfit Fits if the bicycle is avalible and the usage costs are fixed for a time period
+  \twoinline
+    {\reqsatis 5}
+    {\reqdissat 5}
+  \twoinline
+  {\reqdep Bike is clipped in}
+  {\reqconf None}
+  \reqmater None
+  \reqhist Raised by S.H., M.P., K.B., 05.12.2019
+\end{myreq}
+
+%Snow Card 3 Payment Confirmation
+\begin{myreq}
+  \threeinline
+    {\reqno 3}
+    {\reqtype Functional}
+    {\reqevent Payment Confirmation}
+  \reqdesc Payment confirmation is sent to the rental service’s bank account notifying them that the customer paid his service charges
+  \reqrat Customer should be able to pay in his favorite payment service
+  \reqorig Steffen Hanzlik, Marco Peluso, Kendra Birringer, Nader Cacace, Svetozar Stojanovic
+  \reqfit Fits if the payment was successful
+  \twoinline
+    {\reqsatis 4}
+    {\reqdissat 4}
+  \twoinline
+  {\reqdep Payment response succeeded}
+  {\reqconf None}
+  \reqmater None
+  \reqhist Raised by S.H., M.P., K.B., 05.12.2019
+\end{myreq}
+
+%Snow Card 4 Register Customer
+\begin{myreq}
+  \threeinline
+    {\reqno 4}
+    {\reqtype Functional}
+    {\reqevent Register Customer}
+  \reqdesc Customer need to register to get its information, Name, Address and Payment Method
+  \reqrat Customer must register to use the bicycle service
+  \reqorig Steffen Hanzlik, Marco Peluso, Kendra Birringer
+  \reqfit Fits if the customer can register successfully
+  \twoinline
+    {\reqsatis 5}
+    {\reqdissat 5}
+  \twoinline
+  {\reqdep Registration success}
+  {\reqconf None}
+  \reqmater None 
+  \reqhist Raised by S.H., M.P., K.B., 05.12.2019
+\end{myreq}
+
+%Snow Card 5 Log in the customer
+\begin{myreq}
+  \threeinline
+    {\reqno 5}
+    {\reqtype Functional}
+    {\reqevent Log in the customer}
+  \reqdesc Customer must log in to use a bicycle
+  \reqrat Customer must log in the to use the bicycle service
+  \reqorig Steffen Hanzlik, Marco Peluso, Kendra Birringer, Nader Cacace, Svetozar Stojanovic
+  \reqfit Fits if the customer can log in
+  \twoinline
+    {\reqsatis 4}
+    {\reqdissat 4}
+  \twoinline
+  {\reqdep Registration was successful}
+  {\reqconf None}
+  \reqmater None
+  \reqhist changed by N.C. 06.12.2019
+\end{myreq}
+
+%Snow Card 6 Log-out
+\begin{myreq}
+  \threeinline
+    {\reqno 6}
+    {\reqtype Functional}
+    {\reqevent Log out the customer}
+  \reqdesc Customer must have the ability to log out 
+  \reqrat Customer should be able to log out of his application  
+  \reqorig Nader Cacace, Svetozar Stojanovic 
+  \reqfit Fits if the customer can log out
+  \twoinline
+    {\reqsatis 3}
+    {\reqdissat 3}
+  \twoinline
+  {\reqdep Log in was successful}
+  {\reqconf None}
+  \reqmater None 
+  \reqhist changed by S.S. 06.12.2019
+\end{myreq}
+
+%Snow Card 7 Change Account Details
+\begin{myreq}
+  \threeinline
+    {\reqno 7}
+    {\reqtype Functional}
+    {\reqevent Change Account Details}
+  \reqdesc Change personal or payment information 
+  \reqrat Customer should be able to change his personal details 
+  \reqorig Steffen Hanzlik, Marco Peluso, Kendra Birringer 
+  \reqfit Fits if the customer can change account details 
+  \twoinline
+    {\reqsatis 3}
+    {\reqdissat 5}
+  \twoinline
+  {\reqdep Register, Log in}
+  {\reqconf None}
+  \reqmater None 
+  \reqhist changed by S.S. 06.12.2019 
+\end{myreq}
+
+%Snow Card 8 Easy to use
+\begin{myreq}
+  \threeinline
+    {\reqno 8}
+    {\reqtype Non-Functional}
+    {\reqevent Easy to use}
+  \reqdesc The app should be easy to use and visually appealing
+  \reqrat The customer should have a good experience when using the service
+  \reqorig Steffen Hanzlik, Marco Peluso, Kendra Birringer
+  \reqfit Fits if the customer can use the App without any difficulties
+  \twoinline
+    {\reqsatis 5}
+    {\reqdissat 3}
+  \twoinline
+  {\reqdep None}
+  {\reqconf None}
+  \reqmater None
+  \reqhist changed by N.C. 06.12.2019
+\end{myreq}
+
+%Snow Card 9 Membership
+\begin{myreq}
+  \threeinline
+    {\reqno 9}
+    {\reqtype Non-Functional}
+    {\reqevent Membership}
+  \reqdesc  
+  \reqrat Customer should be able to choose if he wants to apply for a membership tier  
+  \reqorig Svetozar Stojanovic 
+  \reqfit Fits if the customer has chosen the membership tiers
+  \twoinline
+    {\reqsatis 3}
+    {\reqdissat 1}
+  \twoinline
+  {\reqdep Registration, Log in}
+  {\reqconf None}
+  \reqmater None 
+  \reqhist changed by S.S. 06.12.2019 
+\end{myreq}
+
+\end{document}
