@@ -5,7 +5,7 @@
 \usepackage{enumitem}
 \usepackage{tcolorbox}
 %TEST
-\usepackage{microtype}
+%\usepackage{microtype}
 %\usepackage{babel}
 %\usepackage[T1]{fontenc}
 %\usepackage[utf8]{luainputenc}
@@ -45,15 +45,15 @@
     {\reqno 1}
     {\reqtype Functional}
     {\reqevent Checkout}
-  \reqdesc Checkout reperesent the state the user can clip off the bike from the bikestation to ride on it
-  \reqrat Customer should be able to rent a bike
+  \reqdesc Checkout reperesent the state the user can start the scooter from the scooterstation to ride on it
+  \reqrat Customer should be able to rent a scooter
   \reqorig Steffen Hanzlik, Marco Peluso, Kendra Birringer
-  \reqfit Fits if the bicycle is checked in and the customer can ride the bike
+  \reqfit Fits if the scooter is checked in and the customer can ride the scooter
   \twoinline
     {\reqsatis 5}
     {\reqdissat 5}
   \twoinline
-  {\reqdep Valid payment, bike can be unlocked}
+  {\reqdep Valid payment, scooter can be unlocked and started}
   {\reqconf None}
   \reqmater None
   \reqhist Raised by S.H., M.P., K.B., 05.12.2019
@@ -66,16 +66,16 @@
     {\reqno 2}
     {\reqtype Functional}
     {\reqevent Checkin}
-  \reqdesc Check in represents the state the user can clip on the bike to bring it back and finish the usage
+  \reqdesc Check in represents the state the user can leave the scooter or to bring it back and finish the usage
 
-  \reqrat Customer should be able to finish the bike usage and to pay for his usage of the bike
+  \reqrat Customer should be able to finish the scooter usage and to pay for his usage of the scooter
   \reqorig Steffen Hanzlik, Marco Peluso, Kendra Birringer, Nader Cacace, Svetozar Stojanovic
-  \reqfit Fits if the bicycle is avalible and the usage costs are fixed for a time period
+  \reqfit Fits if the scooter is available and the usage costs are fixed for a time period
   \twoinline
     {\reqsatis 5}
     {\reqdissat 5}
   \twoinline
-  {\reqdep Bike is clipped in}
+  {\reqdep Scooter stand on scooter station}
   {\reqconf None}
   \reqmater None
   \reqhist Raised by S.H., M.P., K.B., 05.12.2019
@@ -108,7 +108,7 @@
     {\reqtype Functional}
     {\reqevent Register Customer}
   \reqdesc Customer need to register to get its information, Name, Address and Payment Method
-  \reqrat Customer must register to use the bicycle service
+  \reqrat Customer must register to use the scooter service
   \reqorig Steffen Hanzlik, Marco Peluso, Kendra Birringer
   \reqfit Fits if the customer can register successfully
   \twoinline
@@ -127,8 +127,8 @@
     {\reqno 5}
     {\reqtype Functional}
     {\reqevent Log in the customer}
-  \reqdesc Customer must log in to use a bicycle
-  \reqrat Customer must log in the to use the bicycle service
+  \reqdesc Customer must log in to use a scooter
+  \reqrat Customer must log in the to use the scooter service
   \reqorig Steffen Hanzlik, Marco Peluso, Kendra Birringer, Nader Cacace, Svetozar Stojanovic
   \reqfit Fits if the customer can log in
   \twoinline
