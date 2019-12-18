@@ -16,8 +16,11 @@
 
 % For Check-List
 \usepackage{enumitem}
-\usepackage{wasysym}
-
+\usepackage{amssymb,wasysym}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\newlist{todolist}{itemize}{2}
+\setlist[todolist]{label=$\square$}
 % Title, authors and date
 \title{E-Scooter Project 01: Definition of Done}
 \author{
@@ -55,7 +58,8 @@ The definition of "Done" (DoD) is part of the SCRUM metrics. All members of the 
 It is a (check-)list of items which need to be validated to consider a backlog item being “Done”. DoD is defined by the development organization to make sure that the results of multiple teams can be integrated into a releasable product  \cite{thoma1}
 
 For our project, the result needs to match the following definition of "Done:
-\begin{itemize}[label={\Square}]
+\begin{todolist}
+
 \item Description of the requirement in form of a Use Case
 \item Categorization of requirement (functional/non-functional, client/ server)
 \item Business value of the corresponding functionality
@@ -75,7 +79,8 @@ For our project, the result needs to match the following definition of "Done:
 \item Detailed documentation (e.g. table) about who worked on the item and what has been done during the sprint.
 \item Overall quality of the documentation meets general industry standards.
 \item The results have been reviewed and accepted by another member of the team (tester). It needs to be documented who has performed the review.
-\end{itemize}
+
+\end{todolist}
 
 
 
