@@ -1,0 +1,4 @@
+19.01.2020. SS
+- changed some spelling mistakes 
+- moved "Reserve an E-scooter" to "Find an E-scooter on the map" as an extension point
+- Activity diagrams: Pay the Service, Report Problems with Scooter, Give Feedback
