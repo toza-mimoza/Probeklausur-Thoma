@@ -17,7 +17,7 @@
 % Farben
 \usepackage[dvipsnames]{xcolor}
 
-% include PDFs
+% include PDF
 \usepackage{pdfpages}
 
 % For Check-List
@@ -37,6 +37,24 @@ Project: E-Scooter Rental Service}
 \captionsetup{justification=raggedright}
 \newcommand{\source}[1]{\caption*{Source: {#1}}}
 % \newcommand{\source}[1]{\caption*{\hfill Source: {#1}}}
+
+% Own commands for protocols
+\newcommand{\protocolheader}[5]{
+    \vspace{1em}
+    % headline
+    \underline{\textbf{#1:}}
+    
+    % header
+    \begin{tabular}{rl}
+        Week:   & #2\\
+        Date:   & #3\\
+        Time:   & #4\\
+        Participants:   & #5\\
+    \end{tabular}
+    
+    \vspace{1em}
+    \underline{\textbf{Topics:}}
+}
 
 \author{
     Kendra Birringer (1229372)\\
@@ -67,17 +85,17 @@ For analyzing this project, we were encouraged to use the agile method \emph{Scr
 
 The main objective was to develop a high-level software architecture for the E-Scooter rental business. To be able to do this we had to gain a clear understanding of the system's requirements and to build a model which fulfilled these. We used the \emph{Unified Modeling Language (UML)} \cite{uml} in conjunction with the modeling tool \emph{MagicDraw} \cite{magicdraw} to achieve this.
 
-We also had to build user interface prototypes for relevant parts of the functionality. User interface prototypes help developers and customers "to better understand how the system will work and whether it would meet the requirements." \cite{thoma} Concerning the customer, presenting her/him the prototypes, it is very important that she/he understands that these prototypes are not the finished product but are only illustrative examples to demonstrate functionality. We used \emph{Axure RP 9} \cite{axure} to create our prototypes.
+We also had to build user interface prototypes for relevant parts of the functionality. User interface prototypes help developers and customers "better understand how the system will work and whether it would meet the requirements." \cite{thoma} Concerning the customer, presenting her/him the prototypes, it is very important that she/he understands that these prototypes are not the finished product but are only illustrative examples to demonstrate functionality. We used \emph{Axure RP 9} \cite{axure} to create our prototypes.
 
-For our project, the artifacts consist of diagrams and documentation for describing the software functionality. The quality of these artifacts were ensured by a proper definition of "Done".
+For our project, the artifacts consist of diagrams and documentation describing the software functionality. The quality of these artifacts was ensured by a proper definition of "Done".
 
 %==============================================================================
-\newpage
+%\newpage
 \section{Definition of "Done"}
-The definition of "Done" (DoD) is part of the SCRUM metrics. All members of the Scrum Team must have a shared understanding of what it means when the work is complete, to ensure transparency. \cite{scrumguide}
+The definition of "Done" (DoD) is part of the Scrum metrics. All members of the Scrum Team must have a shared understanding of what it means when the work is complete, to ensure transparency. \cite{scrumguide}
 It is a (check-)list of items which need to be validated to consider a backlog item being “Done”. DoD is defined by the development organization to make sure that the results of multiple teams can be integrated into a releasable product. \cite{thoma1}
 
-For our project, the result needs to match the following definition of "Done":
+For our project, the result needed to match the following definition of "Done":
 
 \begin{todolist}
 \item Description of the requirement in form of a Use Case
@@ -101,80 +119,31 @@ For our project, the result needs to match the following definition of "Done":
 \item The results have been reviewed and accepted by another member of the team (tester). It needs to be documented who has performed the review.
 \end{todolist}
 %==============================================================================
-\newpage
 \section{High-level Software Architecture}
-As you can see in figure 1, our team decided to concentrate on analyzing the Software for the Mobile Application.
+As you can see in Figure \ref{fig:software-archi}, our team decided to concentrate on analyzing the Software for the Mobile Application first. We figured, this was the main part of our system, and since we had a limited amount of time, we wanted to create the most important part first. Desktop-/Laptop-Clients could be addressed later on.
 
-\color{red}TODO: insert right picture pls \color{black}
+\newpage
 \begin{figure} [htbp]
   \begin{center}
-    \includegraphics[scale=0.225]{images/high-level-system-architecture.jpg}
+    \includegraphics[scale=0.2]{images/high-level-system-architecture.jpg}
   \end{center}
   \caption{High-level software architecture}
+  \label{fig:software-archi}
   \source{https://commons.wikimedia.org/wiki/File:Client-server-model.svg (modified by Kendra Birringer)}
 \end{figure}
 %==============================================================================
-\newpage
 \section{Backlog Items}
 Backlog items are part of a product backlog. This is an ordered list of requirements which have to be satisfied according to the DoD for the product. The purpose of a backlog item is to take a requirement description, in form of a use case description, as input and build an analysis model of our software capability as result.
 
-We used the "Volere Requirements Specification Template" \cite{volere} also known as "Volere Snow Cards"  as a template to create a list of backlog items using Google Sheets where we collected all of our backlog items. This requirement matrix is shown in figure \ref{fig:reqmatrix}.
+We used the \emph{Volere Requirements Specification Template} \cite{volere} also known as \emph{Volere Snow Cards}  as a template to create a list of backlog items using Google Sheets where we collected all of our backlog items.
 
-\color{red}TODO: FIX Requirements-Matrix as a figure to be able to reference it.
-Possible workaround: convert pdf to images and insert them as figures.
-\color{black}
+% This requirement matrix is shown in figure \ref{fig:reqmatrix}.
+This requirement matrix is shown below.
 
 % \begin{figure} [htbp]
-\label{fig:reqmatrix}
+% \label{fig:reqmatrix}
 \includepdf[pages=-]{includes/pdf/project-requirements-matrix - BacklogItems.pdf}
 % \end{figure}
-
-
-\color{red}TODO: AUF DIE WOCHEN VERTEILEN, AUSFORMULIEREN, BEGRÜNDEN WIESO DIESE MODDELIIERT WURDEN UND DAZU SCHREIBEN WER DARAN GEARBEITET HAT UND WELCHE PROBLEME ES GAB UND WIE SIE GELÖST WURDEN UND WIESO SIE AUF DIESE ART UND WEISE SIE GELÖST WURDEN!!!
-\begin{itemize}
-\item Activity Diagrams:
-  \item Check-in E-Scooter
-  \item Check-out E-Scooter
-  \item Give Feedback
-  \item Log-in
-  \item Log-out
-  \item Manage Account
-  \item Pay the Service
-  \item Register
-  \item Report problems with the Scooter
-  
-\item Sequence Diagrams:
-  \item Check-in E-Scooter
-  \item Check-out E-Scooter
-  \item Add E-Scooter to System
-  \item Find an E-Scooter on the Map
-  \item Pay the Service
-  \item Reserve an E-Scooter
-  \item Regsiter
-  \item Report Problems with the Scooter
-  \item Wallet Management
-    
-\item UI Protypes: 
-  \item Start Menu
-  \item Scan QR Code
-  \item Drving
-  \item Menu Dropdown
-  \item Account Management
-  \item Change Account Details
-  \item Payment Information
-  \item Payment Methods
-  \item Payment Methods: Credit/Debit Card
-  \item Payment Method: Wallet
-  \item Check Drive Statistics
-  \item Check Spent Money
-  \item Other
-  \item Ask for feedback
-  \item Register/ Sign Up
-  \item Log-in
-  \item Loading Screen
-\end{itemize}
-\color{black}
-
 %==============================================================================
 \section{Week One}
 %==============================================================================
@@ -182,10 +151,9 @@ In the first week a few of our team members rented an E-Scooter from the company
 
 The estimation of the effort required to complete the backlog items, was difficult for our team, since we were all inexperienced in that regard. That's why we decided to play "Planning Poker", which is "[\ldots] a consensus-based estimating technique. Agile teams around the world use Planning Poker to estimate their product backlogs. Planning Poker can be used with story points, ideal days, or any other estimating unit." \cite{planning-poker} This proved to be very helpful and was also a lot of fun for our team.
 
-
 We mostly spent the rest of the week with the collection of more requirements for the project.
 
-Because finding dates for further meetings turned out to be difficult, we decided to hold our meetings weekly instead of daily and whenever there would occur any problems which needed to be discussed, via "Discord". Discord is an "All-in-one voice and text chat [\ldots] that's free, secure, and works on both your desktop and phone."\cite{discord}
+Since our team members had vastly different schedules, finding dates for further meetings turned out to be very difficult. That lead us to the decision to have regular weekly instead of daily meetings and whenever there would occur any problems which needed to be discussed, via "Discord". Discord is an "All-in-one voice and text chat [\ldots] that's free, secure, and works on both your desktop and phone."\cite{discord}
 
 \subsection{Division of Work: Week One}
 \begin{table}[htbp]
@@ -195,41 +163,39 @@ Because finding dates for further meetings turned out to be difficult, we decide
 \hline
 K. Birringer & N. Cacace & S. Hanzlik & M. Peluso & S. Stojanovic\\
 \hline
-\% & \% & \% & \% & \% \\ 
+20\%   &20\%  &20\%  &20\%  &20\%\\
 \hline
 \end{tabular}
 \end{table}
-
 %==============================================================================
 \section{Week Two}
 %==============================================================================
 Since we decided to use the agile method Scrum for analyzing the E-Scooter rental service project, the team members were assigned the following roles:
 
 \begin{itemize}
+\item Development Team: Kendra Birringer, Nader Cacace, Steffen Hanzlik,\\
+      Marco Peluso, Svetozar Stojanovic
+      
+The Development Team was responsible for modeling all neccessary UML diagrams and sketching UI prototypes.
+
 \item Scrum Master: Kendra Birringer
 
-As Scrum Master she was responsible for the organization of the whole team: she organized and moderated the team meetings and wrote the protocols. 
+In addition to her role as a member of the development team, Kendra also took on the role of the Scrum Master. She was responsible for the organization of the whole team: she organized and moderated the team meetings and wrote the protocols. 
 
 Another task was to check and correct the spelling, grammar and contents of everything that was written.
 
-\item Development Team: Nader Cacace, Steffen Hanzlik,\\
-      Svetozar Stojanovic
-
-The Development Team was responsible for modeling all neccessary UML diagrams and sketching UI prototypes.
-
 \item Tester: Marco Peluso
 
-The Tester mainly reviewed, documented and accepted the resulting artifacts.
+Marco also acted as the tester. He mainly reviewed, documented and accepted the resulting artifacts.
 \end{itemize}
 
 In the second week the team discussed each of the collected requirements, and we decided which of them fit and which are not necessary for the software. During this discussion we gathered more requirements.
 
-Then we started to talk about the UML diagrams and built a first use case diagram which was too big and complex and needed some adjustments. So, the task for the Development Team was to simplify the diagram and make it clearer.
+Then we started to talk about the UML diagrams and built a first use case diagram which was too big and complex and needed some adjustments. So, the task for the Development Team was to simplify the diagram and make it clearer. Our solution for this problem was to build smaller use case diagrams in addition to the big overview, that just display a single use case in each of them (see Appendix). This was done by Kendra, Svetozar and Marco.
 
-Also, we built a main structure for the documentation of the project and started writing the documentation with LaTex. 
+Also, Kendra, Marco and Steffen built a main structure for the documentation of the project and started writing the documentation with LaTex. 
 
 \subsection{Division of Work: Week Two}
-
 \begin{table}[htbp]
 \centering
 \setlength{\tabcolsep}{10pt}
@@ -237,7 +203,7 @@ Also, we built a main structure for the documentation of the project and started
 \hline
 K. Birringer & N. Cacace & S. Hanzlik & M. Peluso & S. Stojanovic\\
 \hline
-\% & \% & \% & \% & \% \\ 
+18\%   &21\%  &22\%  &18\%  &21\%\\
 \hline
 \end{tabular}
 \end{table}
@@ -245,21 +211,46 @@ K. Birringer & N. Cacace & S. Hanzlik & M. Peluso & S. Stojanovic\\
 %==============================================================================
 \section{Week Three}
 %===============================================================================
-In week three the Development Team modified the use case diagram which was too big. They also modeled further use case diagrams which we then discussed, to find out if they needed further adjustments. At the end of this week, we finished the use case diagrams and finally added the use case documentation to each use case.
+In week three the Development Team modified the use case diagram which was too big. They also modeled further use case diagrams which we then discussed, to find out if they needed further adjustments. At the end of this week, we finished the use case diagrams and Kendra finally added the use case documentation to each use case.
 
 Also, after we thought about where it could be necessary, some activity and sequence diagrams were modeled.
 
-Regarding the sequence diagrams there were some problems.
-For example, the "Check-in" diagram:
+Steffen and Kendra started modeling the following activity diagrams: 
+\begin{itemize}
+    \item Check-in E-Scooter
+    \item Check-out E-Scooter
+    \item Log-in
+    \item Log-out
+    \item Manage Account
+    \item Register
+\end{itemize}
 
-We asked ourselves how to calculate the price for a ride. After some discussion we decided to let the wallet calculate the price for the ride information from the Scooter.
-First, the payment also was included in this diagram, but after reconsidering, we decided that the payment also needed its own, more detailed diagram.
 
-Considering the activity diagrams, we decided to not model a diagram for "Give feedback", because it seemed too simple.
+Svetozar and Marco modeled the following activity diagrams:
+\begin{itemize}
+    \item Give Feedback
+    \item Pay the Service
+    \item Report problems with the Scooter
+\end{itemize}
 
-Then we started to think about the class diagram and asked ourselves which classes we needed and which relations the different classes could have to each other and started modeling the class diagram.
+Nader worked on the following sequence diagrams:
+\begin{itemize}
+    \item Check-in E-Scooter
+    \item Check-out E-Scooter
+    \item Add E-Scooter to System
+    \item Find an E-Scooter on the Map
+    \item Reserve an E-Scooter
+    \item Register
+    \item Report Problems with the Scooter
+\end{itemize}
 
-Furthermore, a first UI prototype was built with the software design tool "Axure".\cite{axure}
+Marco reviewed Nader's sequence diagrams and did some tweaks and adjustments to them.
+
+Also, Svetozar and Marco worked on the Wallet Management sequence diagram.
+
+Then we started to think about the class diagram and asked ourselves which classes we needed and which relations the different classes could have to each other. Then Steffen and Marco started modeling the class diagram.
+
+Furthermore, the first UI prototype "Start Menu" was built with the software design tool \emph{Axure} \cite{axure}.  This was mainly done by Svetozar. 
 
 \subsection{Division of Work: Week Three}
 \begin{table}[htbp]
@@ -269,7 +260,7 @@ Furthermore, a first UI prototype was built with the software design tool "Axure
 \hline
 K. Birringer & N. Cacace & S. Hanzlik & M. Peluso & S. Stojanovic\\
 \hline
-\% & \% & \% & \% & \% \\ 
+19\%   &12\%  &25\%  &19\%  &25\%\\
 \hline
 \end{tabular}
 \end{table}
@@ -277,13 +268,12 @@ K. Birringer & N. Cacace & S. Hanzlik & M. Peluso & S. Stojanovic\\
 %==============================================================================
 \section{Week Four}
 %===============================================================================
-During week four we refined the state of the project by doing a lot of adjustments and modifications to everything we had done so far.
-We updated the requirements, checked spelling and grammar, put the requirements in a proper order and checked what was still missing.
+During week four we refined the state of the project by doing a lot of adjustments and modifications to everything we had done so far. We updated the requirements, Kendra checked the spelling and grammar, put the requirements in a proper order and Marco checked what was still missing and controlled and adjusted all of the diagrams which needed further improvements.
 
-On the basis of the backlog items list we finished all UML diagrams and UI prototypes.
-After we heard the lecture, in which Prof. Dr.-Ing Peter Thoma talked about UML diagrams, we  noticed, that all our activity diagrams lacked a cancelation mode. Therefore, we had to adjust all these diagrams and add a cancelation mode to them. 
+On the basis of the backlog items list we finished all UML diagrams and Svetozar finished all UI prototypes (see Appendix).
+After we heard the lecture, in which Prof. Dr.-Ing Peter Thoma talked about UML diagrams, Steffen noticed, that all our activity diagrams lacked a cancellation mode. Therefore, Steffen and Kendra adjusted all these diagrams and added a cancellation mode to them. 
 
-We also finished most of the documentation, so that almost only the appendices needed to be added.
+Marco and Kendra finished most of the documentation, so that only the appendices needed to be added.
 
 The goal of our team was, to finish everything until the end of this week, so that in the following week, we would be able to fully concentrate on the presentation of the project.
 
@@ -296,7 +286,7 @@ The goal of our team was, to finish everything until the end of this week, so th
 \hline
 K. Birringer & N. Cacace & S. Hanzlik & M. Peluso & S. Stojanovic\\
 \hline
-\% & \% & \% & \% & \% \\ 
+22\%   &12\%  &21\%  &20\%  &25\%\\
 \hline
 \end{tabular}
 \end{table}
@@ -305,15 +295,15 @@ K. Birringer & N. Cacace & S. Hanzlik & M. Peluso & S. Stojanovic\\
 \section{Week Five}
 %===============================================================================
 In week five, we checked everything again and finished everything.
-We generated the report from MagicDraw and added it to the documentation.
-Also, we added all protocols from the team meetings.
+Kendra generated the use case report from MagicDraw. Because the smaller use cases were not included in the report, you can find them in the Appendix.
 
-Then we thought about a way, how to integrate the UI prototypes. We decided to screenshot each prototype and added them as an appendix to the documentation of the project.
+Also all team meeting protocols were added by Marco and Kendra.
 
-Once the documentation was finished, each team member proofread it again and made any necessary improvements, corrections and additions.
+The user interface prototypes were added as screenshots to the appendix to the project's documentation.
 
-Then, finally we started to talk about the presentation and started to build it.
+Once the documentation was finished, each team member checked it again and made any necessary improvements, corrections and additions.
 
+Then, finally the whole team started to work on preparing the presentation. At first, our presentation was a bit too detailed to fit into the 10 minute time limit, which we found out during our first rehearsal. We trimmed it down bit by bit until we could comfortable perform it under 10 minutes (see Appendix).
 %==============================================================================
 \subsection{Division of Work: Week Five}
 
@@ -324,7 +314,7 @@ Then, finally we started to talk about the presentation and started to build it.
 \hline
 K. Birringer & N. Cacace & S. Hanzlik & M. Peluso & S. Stojanovic\\
 \hline
-\% & \% & \% & \% & \% \\ 
+23\%   &11\%  &20\%  &30\%  &16\%\\
 \hline
 \end{tabular}
 \end{table}
@@ -332,138 +322,319 @@ K. Birringer & N. Cacace & S. Hanzlik & M. Peluso & S. Stojanovic\\
 \newpage
 \section{Appendix}
 
-\subsection{MagicDraw Report}
-\color{red}TODO: INSERT MAGICDRAW REPORT HERE!\color{black}
+\includepdf[pagecommand={\subsection{Use Case Report}}]{includes/pdf/UseCase_Report.pdf}
+\includepdf[pages=2-]{includes/pdf/UseCase_Report.pdf}
+%==============================================================================
+\subsection{Detailed Use Case Diagrams}
+\begin{figure} [htbp]
+  \begin{center}
+    \includegraphics[scale=0.52]{images/UseCases/Check-OutE-Scooter.png}
+  \end{center}
+  \caption{Use Case: Check-Out E-Scooter}
+\end{figure}
 
+\begin{figure} [htbp]
+  \begin{center}
+    \includegraphics[scale=0.7]{images/UseCases/CheckStatistics(Admin).png}
+  \end{center}
+  \caption{Use Case: Check Statistics (Admin)}
+\end{figure}
+
+\begin{figure} [htbp]
+  \begin{center}
+    \includegraphics[scale=0.6]{images/UseCases/FindE-ScooterOnTheMap.png}
+  \end{center}
+  \caption{Use Case: Find an E-Scooter on the map}
+\end{figure}
+
+\begin{figure} [htbp]
+  \begin{center}
+    \includegraphics[scale=0.6]{images/UseCases/GetNotifications.png}
+  \end{center}
+  \caption{Use Case: Get Notifications}
+\end{figure}
+
+\begin{figure} [htbp]
+  \begin{center}
+    \includegraphics[scale=0.6]{images/UseCases/Log-in.png}
+  \end{center}
+  \caption{Use Case: Log-in}
+\end{figure}
+
+\begin{figure} [htbp]
+  \begin{center}
+    \includegraphics[scale=0.6]{images/UseCases/ManageAccount.png}
+  \end{center}
+  \caption{Use Case: Manage Account}
+\end{figure}
+
+\begin{figure} [htbp]
+  \begin{center}
+    \includegraphics[scale=0.58]{images/UseCases/PayTheService.png}
+  \end{center}
+  \caption{Use Case: Pay The Service}
+\end{figure}
+
+\begin{figure} [htbp]
+  \begin{center}
+    \includegraphics[scale=0.7]{images/UseCases/SubscribeToTheService.png}
+  \end{center}
+  \caption{Use Case: Subscribe to The Service}
+\end{figure}
+
+
+
+%==============================================================================
+\newpage
+\subsection{Class Diagram}
+  \begin{center}
+    \includegraphics[scale=0.37,angle=90,origin=c]{images/class-diagram.png}
+  \end{center}
+  
+%==============================================================================
+\newpage
+\includepdf[pagecommand={\subsection{Presentation Slides}}]{includes/pdf/presentation.pdf}
+\includepdf[pages=2-]{includes/pdf/presentation.pdf}
+%==============================================================================
 \newpage
 \subsection{UI Prototypes}
+
 \begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/01-start-menu.png}
-  \end{center}
-  \caption{Start Menu}
+    \begin{center}
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                 \includegraphics[scale=0.65]{images/prototypes/01-start-menu.png}
+            \end{center}
+            \caption{Start Menu}
+        \end{minipage}\hfill
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[width=0.87\textwidth]{images/prototypes/01-01-start-menu--scan-qr-code.png}
+            \end{center}
+            \caption{Start Menu $\rightarrow$ Scan QR-Code}
+        \end{minipage}
+    \end{center}
+\end{figure}
+
+\begin{figure} [htbp]
+    \begin{center}
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.65]{images/prototypes/01-02-start-menu---driving.png}
+            \end{center}
+            \caption{Start Menu $\rightarrow$ Driving}
+        \end{minipage}\hfill
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.65]{images/prototypes/02-menu-dropdown.png}
+            \end{center}
+            \caption{Menu Dropdown}
+        \end{minipage}
+    \end{center}
+\end{figure}
+
+
+\begin{figure} [htbp]
+    \begin{center}
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.65]{images/prototypes/02-01-menu-dropdown--account-management.png}
+            \end{center}
+            \caption{Menu Dropdown $\rightarrow$ Account Management}
+        \end{minipage}\hfill
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.65]{images/prototypes/02-01-01-menu-dropdown--account-management--change-account-details.png}
+            \end{center}
+            \caption{Menu Dropdown $\rightarrow$ Account Management $\rightarrow$ Change Account Details}
+        \end{minipage}
+    \end{center}
+\end{figure}
+
+\begin{figure} [htbp]
+    \begin{center}
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.65]{images/prototypes/02-01-menu-dropdown--account-management.png}
+            \end{center}
+            \caption{Menu Dropdown $\rightarrow$ Account Management}
+        \end{minipage}\hfill
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.65]{images/prototypes/02-01-01-menu-dropdown--account-management--change-account-details.png}
+            \end{center}
+            \caption{Menu Dropdown $\rightarrow$ Account Management $\rightarrow$ Change Account Details}
+        \end{minipage}
+    \end{center}
+\end{figure}
+
+\begin{figure} [htbp]
+    \begin{center}
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.65]{images/prototypes/02-02-menu-dropdown--payment-information.png}
+            \end{center}
+            \caption{Menu Dropdown $\rightarrow$ Payment Information}
+        \end{minipage}\hfill
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.65]{images/prototypes/02-02-01-menu-dropdown--payment-information--payment-methods.png}
+            \end{center}
+            \caption{Menu Dropdown $\rightarrow$ Payment Information $\rightarrow$ Payment Methods}
+        \end{minipage}
+    \end{center}
+\end{figure}
+
+\begin{figure} [htbp]
+    \begin{center}
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.65]{images/prototypes/02-02-01-01-menu-dropdown--payment-information--payment-methods--credit-debit-card-info.png}
+            \end{center}
+            \caption{Menu Dropdown $\rightarrow$ Payment Information $\rightarrow$ Payment Methods $\rightarrow$ Credit/Debit Card}
+        \end{minipage}\hfill
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.65]{images/prototypes/02-02-01-02-menu-dropdown--payment-information--payment-methods--wallet.png}
+            \end{center}
+            \caption{Menu Dropdown $\rightarrow$ Payment Information $\rightarrow$ Payment Methods $\rightarrow$ Wallet}
+        \end{minipage}
+    \end{center}
+\end{figure}
+
+\begin{figure} [htbp]
+    \begin{center}
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.59]{images/prototypes/02-03-menu-dropdown--check-drive-statistics.png}
+            \end{center}
+            \caption{Menu Dropdown $\rightarrow$ Check Drive Statistics}
+        \end{minipage}\hfill
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.59]{images/prototypes/02-04-menu-dropdown--check-spent-money.png}
+            \end{center}
+            \caption{Menu Dropdown $\rightarrow$ Check Spent Money}
+        \end{minipage}
+    \end{center}
+\end{figure}
+
+\begin{figure} [htbp]
+    \begin{center}
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.35]{images/prototypes/02-05-menu-dropdown--other.png}
+            \end{center}
+            \caption{Menu Dropdown $\rightarrow$ Other}
+        \end{minipage}\hfill
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.65]{images/prototypes/03-ask-for-feedback.png}
+            \end{center}
+            \caption{Ask for Feedback}
+        \end{minipage}
+    \end{center}
+\end{figure}
+
+\begin{figure} [htbp]
+    \begin{center}
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.65]{images/prototypes/04-register-sign-up.png}
+            \end{center}
+            \caption{Register/Sign Up}
+        \end{minipage}\hfill
+        \begin{minipage}{0.45\textwidth}
+            \begin{center}
+                \includegraphics[scale=0.65]{images/prototypes/05-log-in.png}
+            \end{center}
+            \caption{Log in}
+        \end{minipage}
+    \end{center}
 \end{figure}
 
 \begin{figure} [htbp]
   \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/01-01-start-menu--scan-qr-code.png}
-  \end{center}
-  \caption{Start Menu $\rightarrow$ Scan QR-Code}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/01-02-start-menu---driving.png}
-  \end{center}
-  \caption{Start Menu $\rightarrow$ Driving}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/02-menu-dropdown.png}
-  \end{center}
-  \caption{Menu Dropdown}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/02-01-menu-dropdown--account-management.png}
-  \end{center}
-  \caption{Menu Dropdown $\rightarrow$ Account Management}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/02-01-01-menu-dropdown--account-management--change-account-details.png}
-  \end{center}
-  \caption{Menu Dropdown $\rightarrow$ Account Management $\rightarrow$ Change Account Details}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/02-02-menu-dropdown--payment-information.png}
-  \end{center}
-  \caption{Menu Dropdown $\rightarrow$ Payment Information}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/02-02-01-menu-dropdown--payment-information--payment-methods.png}
-  \end{center}
-  \caption{Menu Dropdown $\rightarrow$ Payment Information $\rightarrow$ Payment Methods}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/02-02-01-01-menu-dropdown--payment-information--payment-methods--credit-debit-card-info.png}
-  \end{center}
-  \caption{Menu Dropdown $\rightarrow$ Payment Information $\rightarrow$ Payment Methods $\rightarrow$ Credit/Debit Card}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/02-02-01-02-menu-dropdown--payment-information--payment-methods--wallet.png}
-  \end{center}
-  \caption{Menu Dropdown $\rightarrow$ Payment Information $\rightarrow$ Payment Methods $\rightarrow$ Wallet}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/02-03-menu-dropdown--check-drive-statistics.png}
-  \end{center}
-  \caption{Menu Dropdown $\rightarrow$ Check Drive Statistics}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/02-04-menu-dropdown--check-spent-money.png}
-  \end{center}
-  \caption{Menu Dropdown $\rightarrow$ Check Spent Money}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.45]{images/prototypes/02-05-menu-dropdown--other.png}
-  \end{center}
-  \caption{Menu Dropdown $\rightarrow$ Other}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/03-ask-for-feedback.png}
-  \end{center}
-  \caption{Ask for Feedback}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/04-register-sign-up.png}
-  \end{center}
-  \caption{Register/Sign Up}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/05-log-in.png}
-  \end{center}
-  \caption{Log in}
-\end{figure}
-
-\begin{figure} [htbp]
-  \begin{center}
-    \includegraphics[scale=0.75]{images/prototypes/06-loading-screen.png}
+    \includegraphics[scale=0.65]{images/prototypes/06-loading-screen.png}
   \end{center}
   \caption{Loading Screen}
 \end{figure}
-
+%==============================================================================
 \newpage
 \subsection{Meeting Protocols}
-\color{red}TODO: INSERT PROTOCOLS HERE! \color{black}
+\color{red}TODO: FINISH PROTOCOLS\color{black}
+
+\protocolheader{Weekly Scrum (Discord)}{1}{2019-12-22}{11:00 - 12:50}
+    {Kendra, Nader, Steffen, Marco, Svetozar}
+\begin{itemize}
+    \item talked about general scope of the project
+    \item reviewed some general questions regarding requirements, use cases, prototyping
+    \item split up work for the coming week
+    \item discussed finding a time slot for daily Scrum meetings, decided to do them weekly instead
+    \item confer about structure of the overall system (web-client, app-client, server, ...)
+    \item Nader was not sure about requirement \#26
+    \item talked about possible roles in our team
+    \item intro to git for the less experienced team members
+    \item played some planning poker
+\end{itemize}
+
+\protocolheader{Weekly Scrum (Discord)}{2}{2020-01-19}{11:00 - 12:15}
+    {Kendra, Nader, Steffen, Marco, Svetozar}
+\begin{itemize}
+    \item discussed collected requirements and importance of individual items
+    \item shared thoughts about the different kind of uml diagrams
+    \item decided to do documentation in LaTeX
+    \item split up work into different parts
+    \item discuss clean up of big use case diagram
+    \item reviewed some of the artifacts according to the DoD
+    \item talked about maybe using Trello as Todo-list tool
+    \item played some more planning poker, to improve estimations
+\end{itemize}
+
+\protocolheader{Weekly Scrum (Discord)}{3}{2020-01-26}{11:00 - 12:30}
+    {Kendra, Nader, Steffen, Marco, Svetozar}
+\begin{itemize}
+    \item reviewed last weeks progress
+    \item plan for next week
+    \item talked through several backlog items
+    \item planning poker again
+    \item discussed possible tools for prototyping - Svetozar wanted to try Axure
+    \item reviewed some git commands
+    \item decided to ditch Trello completely and instead mark backlog items todo status in Google Sheets
+    \item talked a lot about uml diagrams
+\end{itemize}
+
+\protocolheader{Weekly Scrum (Discord)}{4}{2020-02-02}{11:00 - 12:10}
+    {Kendra, Nader, Steffen, Marco, Svetozar}
+\begin{itemize}
+    \item talked about possible improvements of our processes
+    \item went over requirements again
+    \item reviewed some of the diagrams together and talked about possible improvements
+    \item talked about the ui prototypes we wanted to build
+    \item set goal to finish everything until end of week, so that we can focus on presentation next week
+\end{itemize}
+
+\protocolheader{Weekly Scrum (Discord)}{5}{2020-02-09}{11:00 - 12:10}
+    {Kendra, Nader, Steffen, Marco, Svetozar}
+\begin{itemize}
+    \item reviewed everything we had done so far
+    \item discussed about the way we wanted to do the presentation
+    \item realized we still have a lot of minor corrections to do in MagicDraw as well as to the documentation, before we could work on presentation - last weeks goal not really reached
+\end{itemize}
+
+\protocolheader{Presentation Practice Meeting}{5}{2020-02-07}{11:00 - 12:10}
+    {Kendra, Nader, Steffen, Marco, Svetozar}
+\begin{itemize}
+    \item rehearsed presentation
+    \item realized we needed to drastically shorten the presentation
+    \item cut a lot of stuff out - decided to give a short overview of everything and then concentrate on a single use case, explaining its different diagrams
+    \item rehearsed again a few times and tweaked till we were satisfied with the presentation
+\end{itemize}
+
 
 %==============================================================================
 \newpage
 \listoffigures
-
 
 %==============================================================================
 \newpage
@@ -478,11 +649,11 @@ https://www.omg.org/spec/UML/
 \bibitem{magicdraw}
 https://www.nomagic.com/products/magicdraw
 
-\bibitem{axure}
-https://www.axure.com/
-
 \bibitem{thoma}
 Prof. Dr.-Ing Peter Thoma \emph{05 Software Engineering Analysis (Software Models and UML)}
+
+\bibitem{axure}
+https://www.axure.com/
 
 \bibitem{scrumguide}
 https://www.scrumguides.org/scrum-guide.html
@@ -493,7 +664,7 @@ Prof. Dr.-Ing Peter Thoma \emph{02-3 Software Engineering Analysis (Scrum)}
 \bibitem{volere}
 http://www11.informatik.uni-erlangen.de/Lehre/SS2015/PR-SWE/Material/volere-template.pdf
 
- \bibitem{planning-poker}
+\bibitem{planning-poker}
 https://www.mountaingoatsoftware.com/agile/planning-poker
 
 \bibitem{discord}
